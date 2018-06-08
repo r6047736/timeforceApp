@@ -1,0 +1,8 @@
+{
+  "name": "todocombat",
+  "app_id": "9a36743f",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
