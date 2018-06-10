@@ -11,6 +11,8 @@ import {TimerManagerProvider} from '../providers/timer-manager/timer-manager';
 
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { BackgroundMode } from '@ionic-native/background-mode';
+import { ToastController } from 'ionic-angular';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +28,8 @@ export class MyApp {
      public splashScreen: SplashScreen,
      private tm :TimerManagerProvider,
     private ln: LocalNotifications,
-    private backgroundMode: BackgroundMode) {
+    private backgroundMode: BackgroundMode,
+  private toast:ToastController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -44,7 +47,16 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      console.log(this.backgroundMode.isEnabled().error )
+      console.log(this.backgroundMode.isEnabled())
+
+      let toast1 = this.toast.create({
+        message: 'User was added successfully',
+        duration: 3000,
+        position: 'top'
+      });
+      toast1.present();
+
+      
       //this.backgroundMode.disable();
 
 /*

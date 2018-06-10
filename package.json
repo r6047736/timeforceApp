@@ -29,6 +29,7 @@
     "@ionic/pro": "1.0.20",
     "@ionic/storage": "^2.1.3",
     "cordova-plugin-background-mode": "^0.7.2",
+    "cordova-plugin-ionic": "^4.1.7",
     "cordova-plugin-local-notification": "^0.9.0-beta.2",
     "cordova-sqlite-storage": "^2.3.2",
     "ionic-angular": "3.9.2",
@@ -46,7 +47,12 @@
     "plugins": {
       "cordova-sqlite-storage": {},
       "cordova-plugin-local-notification": {},
-      "cordova-plugin-background-mode": {}
+      "cordova-plugin-background-mode": {},
+      "cordova-plugin-ionic": {
+        "APP_ID": "9a36743f",
+        "CHANNEL_NAME": "Production",
+        "UPDATE_METHOD": "auto"
+      }
     }
   }
 }
