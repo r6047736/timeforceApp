@@ -5,6 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+//import { TimerPage } from '../pages/timer';
+import {TimerManagerProvider} from '../providers/timer-manager/timer-manager';
+
+
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { BackgroundMode } from '@ionic-native/background-mode';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,13 +22,18 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar,
+     public splashScreen: SplashScreen,
+     private tm :TimerManagerProvider,
+    private ln: LocalNotifications,
+    private backgroundMode: BackgroundMode) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      { title: 'Ranking', component: 'timer' }
     ];
 
   }
@@ -33,7 +44,38 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      console.log(this.backgroundMode.isEnabled().error )
+      //this.backgroundMode.disable();
+
+/*
+      this.platform.pause.subscribe(()=>{
+        console.trace("pause called");
+        this.ln.schedule({
+          title: 'You need go back',
+          text: 'You will lose otherwise',
+          attachments: ['file://img/rb-leipzig.jpg'],
+          actions: [
+              { id: 'yes', title: 'Yes' },
+              { id: 'no',  title: 'No' }
+          ]
+        })
+      })
+      document.addEventListener('pause', () => {
+        console.log("paused")
+       },false)
+  
+      this.platform.resume.subscribe((data)=>{
+        console.trace("resume called");
+      })
+
+      */
     });
+
+    
+
+    
+
+    
   }
 
   openPage(page) {

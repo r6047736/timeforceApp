@@ -14,3 +14,66 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('../assets/fonts/Montserrat-Medium.otf');
+    }
+@font-face {
+        font-family: 'Montserrat-Regular';
+        src: url('../assets/fonts/Montserrat-Regular.otf');
+        }
+@font-face {
+            font-family: 'Montserrat-SemiBold';
+            src: url('../assets/fonts/Montserrat-SemiBold.otf');
+            }
+@font-face{
+    font-family: 'Dry-Brush';
+    src: url('../assets/fonts/Dry-Brush.ttf');
+}
+
+$font-family-md-base: "Montserrat-SemiBold";
+$font-family-ios-base: "Montserrat-SemiBold";
+$font-family-wp-base: "Montserrat-SemiBold";
+$font-bold:"Montserrat-SemiBold";
+$font-md:"Montserrat-Medium";
+$font-reg:"Montserrat-Regular";
+$font-brush:"Dry-Brush";
+
+
+@mixin valign{
+    display: flex;
+    //justify-content: center;
+    align-items: center;
+}
+@mixin bd($color){
+    border: 1px solid $color;
+}
+
+
+@mixin center(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+///
+
+ion-menu{
+//font-family: $font-brush;
+    .bg{
+       
+        position: absolute;
+        bottom: 0px;
+        img{
+          
+            display: block;
+        }
+       
+    }
+}
