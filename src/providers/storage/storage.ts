@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 /*
@@ -12,7 +12,7 @@ export class StorageProvider {
 
   storage: Storage;
 
-  constructor(public http: HttpClient,private st :Storage ) {
+  constructor(private st :Storage ) {
     console.log('Hello StorageProvider Provider');
     this.storage = st;
   }
@@ -21,6 +21,14 @@ export class StorageProvider {
   updateStorage(){
 
   }
+
+  async get(key){
+    return await this.st.get(key);
+  }
+  async set(key,val){
+    return await this.st.set(key, val);
+  }
+
 
 
 

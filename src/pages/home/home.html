@@ -10,7 +10,13 @@
 <ion-content fullscreen no-bounce padding >
   <div class="container">
     <p>Wether you are using any </p>
-
+<button (click)="start()">open</button>
+<button (click)="motivation()" >page</button>
+<div>
+  <button (click)="auth.signInGoogle()">signin</button>
+  <button (click)="auth.signOut()">signout</button>
+</div>
     </div>
+
   
 </ion-content>

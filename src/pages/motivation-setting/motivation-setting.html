@@ -1,0 +1,170 @@
+<!--
+  Generated template for the MotivationSettingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar transparent>
+    <ion-title> 自省室 </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="hd">
+
+  </div>
+
+  <div class="bd">
+    
+    <div class="space">
+
+    </div>
+    <div class="information">
+ <ion-slides  #slide>
+
+     
+      <ion-slide >
+
+      <div class="container">
+        <div class="title">座右铭</div>
+        <div class="input-content">
+          <ion-item>
+            <ion-textarea [(ngModel)]="motivation.motivationData.quote" rows="3" [spellcheck]="true" placeholder="Life can be much broader once you discover one simple fact, and that is – everything around you that you call life, was made up by people that were no smarter than you. And you can change it.."></ion-textarea>
+          </ion-item>
+        </div>
+        <div class="next">
+           <div class="left">
+             <span class="">1/5</span>
+           </div>
+           <div class="right">
+             <span class="nextButton" (click)="swipeTo(1)">下一页</span>
+           </div>
+        </div>
+      </div>
+      
+      </ion-slide>
+      <ion-slide >
+          <div class="container">
+              <div class="title">最近的短期目标</div>
+              <div class="input-content">
+                <ion-item>
+                  <ion-textarea [(ngModel)]="motivation.motivationData.shortTermGoal" rows="2" [spellcheck]="true" placeholder="坚持克服拖延症21天, 坚持记录"></ion-textarea>
+                </ion-item>
+              </div>
+              <div class="next">
+                <div class="left">
+                  <span class="">2/5</span>
+                </div>
+                <div class="right">
+                  <span class="nextButton" (click)="swipeTo(2)">下一页</span>
+                </div>
+              </div>
+
+          </div>
+      
+
+      </ion-slide>
+      <ion-slide >
+
+          <div class="container">
+              <div class="title">你的最终梦想</div>
+              <div class="input-content">
+                <ion-item>
+                  <ion-textarea [(ngModel)]="motivation.motivationData.longTermGoal" rows="1" [spellcheck]="true" placeholder="创造一个完全沉浸式的武侠VR世界..."></ion-textarea>
+                </ion-item>
+              </div>
+              <div class="next">
+                <div class="left">
+                  <span class="">3/5</span>
+                </div>
+                <div class="right">
+                  <span class="nextButton" (click)="swipeTo(3)" >下一页</span>
+                </div>
+              </div>
+
+          </div>
+      
+
+      </ion-slide>
+      <ion-slide >
+        <div class="container">
+            <div class="title">对自己想说什么</div>
+            <div class="input-content">
+              <ion-item>
+                <ion-textarea [(ngModel)]="motivation.motivationData.toSelfWeek" rows="2" [spellcheck]="true" placeholder="对一个月后的自己想说什么" ></ion-textarea>
+              </ion-item>
+
+              <ion-item>
+                  <ion-textarea [(ngModel)]="motivation.motivationData.toSelfMonth" rows="2" [spellcheck]="true" placeholder="对一年后的自己想说什么"></ion-textarea>
+                </ion-item>
+
+                <ion-item>
+                    <ion-textarea [(ngModel)]="motivation.motivationData.toSelfYear" rows="2" [spellcheck]="true" placeholder="对十年后的自己想说什么"></ion-textarea>
+                  </ion-item>
+
+            </div>
+            <div class="next">
+       <div class="left">
+                  <span class="">4/5</span>
+                </div>
+                <div class="right">
+                  <span class="nextButton" (click)="swipeTo(4)" >下一页</span>
+                </div>
+            </div>
+        </div>
+     
+      </ion-slide>
+      <ion-slide>
+        <div class="container">
+            <div class="title">想赶超的人</div>
+
+            <div class="input-content">
+              <div class="avatar" hidden>
+                <img class="img"  src="data:image/jpeg;base64,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"/>
+
+              </div>
+              <ion-item>
+                  <ion-textarea [(ngModel)]="motivation.motivationData.roleModel" rows="1" [spellcheck]="true" placeholder="Your role model"></ion-textarea>
+                </ion-item>
+
+      
+            </div>
+            <div class="next">
+                <div class="left">
+                    <span class="">5/5</span>
+                  </div>
+                  <div class="right">
+                 
+                  </div>
+            </div>
+        </div>
+
+     
+      </ion-slide>
+    
+
+
+
+  
+    </ion-slides>
+    </div>
+
+    <div class="explain">
+        每当你没有动力了, 那就来这里看一下自己想变成的样子. 如果你没有努力，怎么有资格说配拥有成功？
+      </div>
+
+      <div class="confirm">
+
+        <span class="but" tappable (click)="saveData()">
+          保存
+        </span>
+      </div>
+
+  </div>
+  <div class="ft"></div>
+
+</ion-content>

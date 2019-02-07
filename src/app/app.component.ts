@@ -34,9 +34,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Ranking', component: 'timer' }
+      { title: '首页', component: HomePage },
+      { title: '排行榜', component: ListPage },
+      { title: '战斗', component: ListPage }
     ];
 
   }
@@ -47,40 +47,11 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      console.log(this.backgroundMode.isEnabled())
+      this.backgroundMode.enable();
+     
+    
 
-      let toast1 = this.toast.create({
-        message: 'User was added successfully',
-        duration: 3000,
-        position: 'top'
-      });
-      toast1.present();
-
-      
-      //this.backgroundMode.disable();
-
-/*
-      this.platform.pause.subscribe(()=>{
-        console.trace("pause called");
-        this.ln.schedule({
-          title: 'You need go back',
-          text: 'You will lose otherwise',
-          attachments: ['file://img/rb-leipzig.jpg'],
-          actions: [
-              { id: 'yes', title: 'Yes' },
-              { id: 'no',  title: 'No' }
-          ]
-        })
-      })
-      document.addEventListener('pause', () => {
-        console.log("paused")
-       },false)
-  
-      this.platform.resume.subscribe((data)=>{
-        console.trace("resume called");
-      })
-
-      */
+      console.log('is in background mode ? ',this.backgroundMode.isEnabled())
     });
 
     

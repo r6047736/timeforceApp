@@ -15,6 +15,36 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+*{
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+ion-icon {
+    &[class*="custom-"] {
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+      width: 16px !important;
+      height: 16px !important;
+    }
+  
+    &[class*="custom-timer"] {
+      mask-image: url(/assets/icon/timer.svg);
+    }
+
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline-offset: 0px !important;
+  outline: none !important;
+}
+
+$red:#C3452C;
+
+
 @font-face {
     font-family: 'Montserrat-Medium';
     src: url('../assets/fonts/Montserrat-Medium.otf');
@@ -28,8 +58,12 @@
             src: url('../assets/fonts/Montserrat-SemiBold.otf');
             }
 @font-face{
-    font-family: 'Dry-Brush';
-    src: url('../assets/fonts/Dry-Brush.ttf');
+    font-family: 'HYQiHei-bold';
+    src: url('../assets/fonts/HYQiHeiX1-55W.ttf');
+}
+@font-face{
+    font-family: 'HYQiHei-reg';
+    src: url('../assets/fonts/HYQiHeiX1-45W.ttf');
 }
 
 $font-family-md-base: "Montserrat-SemiBold";
@@ -38,7 +72,8 @@ $font-family-wp-base: "Montserrat-SemiBold";
 $font-bold:"Montserrat-SemiBold";
 $font-md:"Montserrat-Medium";
 $font-reg:"Montserrat-Regular";
-$font-brush:"Dry-Brush";
+$font-hf-bold:"HYQiHei-bold";
+$font-hf-reg:'HYQiHei-reg';
 
 
 @mixin valign{
@@ -65,7 +100,11 @@ $font-brush:"Dry-Brush";
 ///
 
 ion-menu{
-//font-family: $font-brush;
+font-family: $font-hf-bold;
+.item-md.item-block .item-inner{
+    border: none;
+    text-align: center;
+}
     .bg{
        
         position: absolute;

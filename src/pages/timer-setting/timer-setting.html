@@ -1,0 +1,170 @@
+<!--
+  Generated template for the TimerSettingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-header no-border >
+
+  <ion-navbar  >
+    <ion-title> 
+      设置
+    </ion-title>
+    <!-- <div class="button-back" navPop><ion-icon name="arrow-round-back"></ion-icon></div> -->
+   </ion-navbar>
+
+</ion-header>
+<ion-content  [fullscreen]="true" class="bg"   padding  >
+  
+    <ion-list no-lines  >
+            <ion-item>
+                <ion-label fixed>任务名称</ion-label>
+                <ion-input type="text" value=""></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label fixed>时长</ion-label>
+                  <ion-input [(ngModel)]="totalLength" type="tel" name="totalLength" maxlength="2" ></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label fixed>休息时间</ion-label>
+                    <ion-input [(ngModel)]="relaxLength" type="tel" name="relaxLength" maxlength="2"></ion-input>
+                  </ion-item>
+
+                  <ion-item>
+                      <ion-label>循环</ion-label>
+                      <ion-toggle  [(ngModel)]="repeat"  ></ion-toggle>
+                    
+                      
+                    </ion-item>
+                    <ion-item class="repeatTime" [ngClass]="{'moveout': repeat==false }">
+                        <ion-label fixed>循环次数</ion-label>
+                      <ion-input  [(ngModel)]="repeatTime" type="tel" name="repeatTime" maxlength="3"></ion-input>
+                  
+                      </ion-item>
+                      <ion-item></ion-item>
+
+      </ion-list>
+
+      <ion-list  no-lines>
+          <ion-list-header>
+            硬盒模式
+            <div>  在本模式下不可以切换/最小化/应用，否则会导致任务失败</div>
+          </ion-list-header>
+       
+
+             <ion-item>
+              <ion-label>启用</ion-label>
+              <ion-toggle [(ngModel)]="hardcoreMode" ></ion-toggle>
+            </ion-item>
+            <ion-item>
+              </ion-item>
+         
+          
+
+       
+        </ion-list>
+
+
+      <ion-list  no-lines>
+          <ion-list-header>
+            多人模式
+          </ion-list-header>
+
+             <ion-item>
+              <ion-label>公开(开设学习室)</ion-label>
+              <ion-toggle  checked="false"></ion-toggle>
+            </ion-item>
+         
+          
+
+       
+        </ion-list>
+
+
+        <div class="confirm"  >
+            <button (click)="confirm()">确认设置</button>
+          </div>
+    
+        
+              
+    
+
+
+    <div class="container" [hidden]="true">
+        <ion-item>
+            <ion-label>Date</ion-label>
+        
+            <ion-datetime display-format="MMM DD, YYYY HH:mm"></ion-datetime>
+
+          </ion-item>
+
+
+        <div class="top">
+          <div class="text">
+          
+            
+            <div class="title">设置本次目标</div>
+            <div class="subtitle"> </div>
+          </div>
+        </div>
+          <div class="mid">
+            
+              <ion-item >
+                  <ion-label color="primary" floating>任务标题</ion-label>
+                  <ion-input [(ngModel)]="taskName" name="name" ></ion-input>
+                  
+                </ion-item>
+                <ion-item >
+                    <ion-label color="primary" floating>任务时间</ion-label>
+                 
+                    <ion-input [(ngModel)]="totalLength" type="tel" name="totalLength" maxlength="10" ></ion-input>
+                  </ion-item>
+                  <ion-item >
+                      <ion-label color="primary" floating>休息间隔</ion-label>
+                      <ion-input [(ngModel)]="relaxLength" type="tel" name="relaxLength" maxlength="2" >
+                        </ion-input>  
+                    </ion-item>
+
+
+                      <div class="item terms">
+      
+                          <div class="content">
+                              <input type="checkbox" [(ngModel)]="repeat" id="terms" style="display: none;">
+                              <label for="terms" class="check"> 
+                                <svg width="18px" height="18px" viewBox="0 0 18 18">
+                                  <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                                  <polyline points="1 9 7 14 15 4"></polyline>
+                                </svg>
+                                连续工作
+                              </label>
+                          </div>
+                          </div>
+
+              
+                  
+                  <div class="login"  >
+                    <button (click)="confirm()">确认设置</button>
+                  </div>
+    
+          </div>
+          <div class="bot">
+            <div class="text">
+            
+            </div>
+          </div>
+       
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</ion-content>

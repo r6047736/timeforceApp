@@ -1,0 +1,145 @@
+page-motivation-setting {
+    .scroll-content {
+        padding-bottom: 0 !important;
+    }
+    ion-content{
+
+        .hd{
+
+        }
+        .bd{
+          //  @include bd(red);
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            
+
+            .space{
+                flex:1;
+            }
+            .information{
+                flex-basis: 400px;
+          //      @include bd(red);
+
+                ion-slides{
+                    ion-slide{
+                           width: 50px;
+                     
+                          display: flex;
+                          //justify-content: center;
+                        // align-items: center;
+                          height: 100%;
+
+
+                          .container{
+                              position: absolute;
+                              height: 100%;
+                              top:0;
+                              bottom: 0px;
+                              left: 0px;
+                              right:0px;
+                              background: white;
+                              display: flex;
+                              flex-direction: column;
+                              .title{
+                                flex-basis: 69px;
+                           //   @include bd(red);
+                              @include center;
+  
+                             }
+                             .input-content{
+                                flex:1;
+                            //  @include bd(red);
+                             
+                              @include center();
+                              flex-direction: column;
+                              ion-textarea{
+                               border:none;
+                              //height: 100px;
+                                 // height: 40px;
+                              }
+                              .avatar{
+                                  margin-bottom: 20px;
+                                  @include bd(black);
+                                  width:128px;
+                                  height:128px;
+                                  border-radius: 50%;
+                                  overflow: hidden;
+                                img{
+                                    display: block;
+                                }
+                              }
+                              
+                             }
+                             .next{
+                                //flex:1;
+                              flex-basis: 120px;
+                             
+                              display: flex;
+                              flex-direction: row;
+                              width: 100%;
+                              .left{
+                                 padding: 20px;
+                                 //text-align: center;
+                              //  @include bd(red);
+                              @include center;
+                              font-size: 0.7em;
+                              }
+                              .right{
+                                flex: 1;
+                               // @include bd(red);
+                                align-items: flex-end;
+                               display: flex;
+                                justify-content: flex-end;
+                                align-items: center;
+                                .nextButton{
+                                    font-size: 0.6em;
+                                    margin: 18px;
+                                    display: inline-block;
+                                    background: $red;
+                                    color:white;
+                                    padding:6px 21px;
+                                    border-radius: 2em;
+                                  //  height: ;
+                                }
+                              }
+                             }
+
+                          }
+                          
+                        
+                    }
+                }
+            }
+            .explain{
+                flex-basis: 100px;
+              //  @include bd(red);
+                @include center();
+                padding: 10px;
+                text-align: center;
+            }
+            .confirm{
+                flex: 1;
+               // @include bd(red);
+                @include center();
+                margin-bottom: 20px;
+              
+                .but{
+                   
+                    //@include bd(red);
+                   // @include center();
+                   padding:15px 100px;
+                    background: $red;
+                    color:white;
+                    border-radius: 2em;
+
+                }
+            }
+        }
+        .ft{
+    
+        }
+    }
+
+}
