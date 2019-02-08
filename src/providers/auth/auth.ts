@@ -144,11 +144,41 @@ export class AuthProvider {
       email: user.email,
       displayName: user.displayName ,
       photoURL: user.photoURL ,
+      gender: user.gender || "", 
       login_time: new Date()
     }
     return userRef.set( data, {merge:true });
 
   }
+
+  updateUserName(userName){
+    if (this.uid){
+      return this.afs.doc(`users/${this.uid}`).set({
+        displayName: userName,
+      }, {
+        merge:true})
+    }
+  }
+
+  updateUserIntro(intro){
+    if (this.uid){
+      return this.afs.doc(`users/${this.uid}`).set({
+        intro: intro,
+      }, {
+        merge:true})
+    }
+  }
+
+  updateUserGender(gender){
+    if (this.uid){
+      return this.afs.doc(`users/${this.uid}`).set({
+        gender: gender,
+      }, {
+        merge:true})
+    }
+  }
+
+
   
 
 

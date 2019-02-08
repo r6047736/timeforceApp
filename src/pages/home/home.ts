@@ -26,4 +26,9 @@ export class HomePage {
     this.navCtrl.push('motivation-setting');
   }
 
+  openProfile(){
+    this.navCtrl.push('profile');
+    
+  }
+
 }

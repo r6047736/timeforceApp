@@ -15,10 +15,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-*{
-    font-family: 'Open Sans', sans-serif;
-
-}
+body{font: 12px arial;}
 
 ion-icon {
     &[class*="custom-"] {
@@ -33,6 +30,9 @@ ion-icon {
     &[class*="custom-timer"] {
       mask-image: url(/assets/icon/timer.svg);
     }
+    &[class*="custom-location"] {
+        mask-image: url(/assets/icon/location.svg);
+      }
 
 }
 input:focus,
@@ -76,11 +76,16 @@ $font-hf-bold:"HYQiHei-bold";
 $font-hf-reg:'HYQiHei-reg';
 
 
+@mixin  img($url) {
+    background-image:url($url);
+    background-position: center;
+    background-size: cover;
+}
 @mixin valign{
     display: flex;
-    //justify-content: center;
     align-items: center;
 }
+
 @mixin bd($color){
     border: 1px solid $color;
 }

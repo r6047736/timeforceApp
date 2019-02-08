@@ -1,0 +1,117 @@
+<ion-header no-border>
+    <ion-navbar  >
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title></ion-title>
+      <ion-buttons end> <button (click)="openSetting()"> <ion-icon name="mail-open" ></ion-icon> </button> </ion-buttons>
+      <ion-buttons end> <button (click)="openSetting()"> <ion-icon name="create" ></ion-icon> </button> </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content fullscreen no-bounce  >
+    <div class="container">
+        <div class="info">
+          <div class="left">
+<div class="avatar"></div>
+          </div>
+          <div class="right">
+            <div class="name"> Brain cook</div>
+            <div class="intro"> Student of Califoria and studying computer science and design, looking for jobs, work 9 to 5 everyday and need some fun</div>
+            <div class="location">
+
+              <ion-icon name="custom-location"> </ion-icon>
+              Fremont US
+            </div>
+          </div>
+        </div>
+
+        <div class="statics">
+          <div class="section">
+            <div class="title">番茄钟</div>
+            <div class="number"> 50 </div>
+
+          </div>
+          <div class="section">
+              <div class="title">硬核模式</div>
+              <div class="number"> 10 </div>
+            </div>
+            <div class="section">
+                <div class="title">获赞</div>
+                <div class="number"> 20 </div>
+              </div>
+
+        </div>
+    <div class="activity">
+      <div class="title">
+        Activity
+      </div>
+      <div class="content">
+        <div class="event" *ngFor="let f of [1,2,3,4]">
+          <div class="left-section">
+            <ion-icon name="custom-timer"></ion-icon>
+          </div>
+          <div class="right-section">
+              <div class="eventTitle"> 
+                <div class="left"> Finish a pomorodo: read a book </div>
+                <div class="right"> 10 sec </div>
+               </div>
+              <div class="content"> 
+                <div class=""> 10 mins</div>
+                <div class=""> 10 mins</div>
+              </div>
+          </div>
+        
+        </div>
+       
+      </div>
+    </div>
+     
+    </div>
+     
+
+  </ion-content>
+  
+  <!-- <ion-content fullscreen no-bounce  >
+
+    <div class="fixed-container" ion-fixed >
+        <div class="top" >
+
+          <div class="img">
+          </div>
+          <div class="mask"></div>
+        
+         
+        </div>
+        <div class="mid" >
+          <ion-slides>
+            <ion-slide id="slide1">
+                <div class="info">
+                  
+                    <div class="left">
+        
+                      <div class="avatar">
+                          <div class="">
+        
+                          </div>
+                      </div>
+                     
+                    </div>
+                    <div class="right">
+                      <span >关注</span>
+                    </div>
+                  </div>
+            </ion-slide>
+            <ion-slide *ngFor="let a of [1,2,3,4,5,6]">
+              {{a}}
+            </ion-slide>
+          </ion-slides>
+
+        </div>
+        <div class="bot"></div>
+    </div>
+
+   
+    
+  </ion-content> -->
+

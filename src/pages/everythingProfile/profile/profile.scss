@@ -1,0 +1,307 @@
+page-profile {
+    @mixin gradient() {
+        //background: rgba(56,55,55,0.09);
+        background: -moz-linear-gradient(
+          top,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+        background: -webkit-gradient(
+          left top,
+          left bottom,
+          color-stop(0%, rgba(56, 55, 55, 0)),
+          color-stop(100%, rgba(66, 65, 65, 0.9))
+        );
+        background: -webkit-linear-gradient(
+          top,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.9) 100%
+        );
+        background: -o-linear-gradient(
+          top,
+          rgba(56, 55, 55, 0) 0%,
+          rgba(66, 65, 65, 0.9) 100%
+        );
+        background: -ms-linear-gradient(
+          top,
+          rgba(56, 55, 55, 0) 20%,
+          rgba(66, 65, 65, 0.9) 100%
+        );
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0,0.9) 100%
+        );
+      }
+      @mixin box-shadow($top, $left, $blur, $spread, $color, $inset:"") {
+
+        -webkit-box-shadow:$top $left $blur $spread $color #{$inset};
+        -moz-box-shadow:$top $left $blur $spread, $color #{$inset};
+        box-shadow:$top $left $blur $spread $color #{$inset};
+      }
+
+ion-content{
+background: #f8f8f8 !important;
+
+.container{
+   
+    min-height: 80%;
+   margin: 10px 25px 10px 50px;
+
+    .info{
+        display:flex;
+        .left{
+            padding-right: 30px;
+            .avatar{
+              
+                height: 20vw;
+                width: 20vw;
+                border-radius: 10vw;
+                background: white;
+            }
+
+
+        }
+        .right{
+            font-family: $font-md;
+            .name{
+               
+              
+                font-weight: bold;
+                font-size: 1.5em;
+                color:#313333;
+                //letter-spacing: ;
+            }
+            .intro{
+                margin: 10px 0px;
+                font-family: $font-md;
+                color: #B7B9C3;
+                font-size: 0.9em;
+            }
+            .location{
+               
+                @include valign();
+                font-size: 0.9em;
+                color: #BABCC9;
+                ion-icon{
+                    zoom: 0.9;
+                    margin:5px 5px 5px 0px;
+                }
+
+            }
+
+        }
+    }
+    .statics{
+        margin-top:5vh;
+      
+        min-height: 8vh;
+            width:100%;
+           // border:1px solid black;
+        @include valign();
+
+        .section{
+            text-align: center;
+            flex:1;
+            .title{
+           color:rgb(182, 183, 190);
+           font-size: 0.8em;
+
+
+            }
+            .number{
+                margin: 5px 0px;
+                color:#3C3E3E;
+                font-family: $font-md;
+                font-size: 1.5em;
+
+            }
+        }
+       
+    }
+    .activity{
+        margin-top:5vh;
+        min-height: 200px;
+       // background: #B7B9C3;
+
+        .title{
+            margin-bottom: 3vh;
+            font-family: $font-md;
+font-size: 1.1em;
+//letter-spacing: 0.5px;
+            color:#A6AABB;
+
+        }
+        .content{
+           // padding: 20px;
+            .event{
+                margin-bottom: 3vh;
+                background: #fcfcfc;
+                min-height: 100px;
+                border-radius: 5px;
+              @include box-shadow(-3px, 0px , 20px , 0px, rgba(0, 0, 0, 0.02));
+              //-webkit-box-shadow: 0px 0px 45px -27px rgba(0,0,0,1);
+                display: flex;
+                
+
+                .left-section{
+                   
+                    flex-basis: 20%;
+                    @include center();
+                    ion-icon{
+                    
+                        zoom: 1.5;
+                        color: #BABCC9;
+                    }
+
+                    
+                }
+                .right-section{
+                    flex:1;
+                   // @include bd(red);
+                    padding:20px 10px ;
+
+
+                    .eventTitle{
+                        font-family: $font-md;
+                        color: #aeb0bc;
+                        display: flex;
+                        
+                        .left{
+                            font-size: 0.9em;
+                            flex:1;
+                        }
+                        .right{
+                            padding-right:10px;
+                            font-family: $font-reg;
+                            font-size: 0.9em;
+                        }
+                    }
+                    .content{
+                        margin-top: 5px;
+                        font-size: 0.8em;
+                        color: #aeb0bc;
+                    }
+                 
+                }
+                
+            }
+        }
+    }
+}
+
+
+   
+
+
+   // background-image: url('https://s3.amazonaws.com/media.briantracy.com/blog/wp-content/uploads/2015/12/07130244/Steve-Jobs-The-Only-Way-inspirational-quote.png');
+   // background-size: 50%;
+    // .fixed-container{
+    //     display: flex;
+    //     flex-direction: column;
+    //     height: 100%;
+    //     width:100%;
+
+
+    //     .top{
+    //         top:0px;
+    //        // @include bd(red);
+    //         position: relative;
+    //         flex:3;
+          
+
+    //         .img{
+    //             position: absolute;
+    //             height: 100%;
+    //             width:100%;
+    //             background-image: url('http://img.sanhao.com/community_news/28318/2018090614513325.jpg');
+    //             background-size: cover;
+    //             background-position: center;
+    //         }
+    //         .mask{
+                              
+    //             position: absolute;
+    //             bottom: 0px;
+    //            // @include bd(red);
+    //             height:100px;
+    //             width:100%;
+    //             @include gradient();
+
+    //         }
+            
+            
+          
+          
+          
+    //     }
+    //     .mid{
+    //        // @include bd(blue);
+    //         flex:2;
+
+    //         ion-slides{
+    //             @include bd(red);
+    //             ion-slide{
+    //                 @include bd(red);
+
+    //                 &#slide1{
+    //                     display: flex;
+    //                     align-items: flex-start;
+    //                     .info{
+    //                        // position: absolute;
+                          
+    //                         width: 100%;
+                           
+    //                         display: flex;
+    //                         padding:10px 0px;
+                          
+    //                         .left{
+    //                             z-index: 2;
+    //                             padding-left:30px;
+    //                             flex:1;
+    //                             @include bd(red);
+    //                             @include valign();
+            
+    //                             .avatar{
+    //                                // @include bd(red);
+    //                                padding:5px;
+    //                                 div{
+    //                                     height: 64px;
+    //                                     width:64px;
+    //                                     border-radius: 32px;
+    //                                    @include img('https://static01.nyt.com/images/2011/03/13/arts/COOPER/COOPER-jumbo-v2.jpg');
+                                    
+    //                                 }
+    //                             }
+                               
+                               
+    //                         }
+    //                         .right{
+    //                             flex:1;
+    //                             z-index: 2;
+    //                             padding-right:30px;
+    //                             //flex-basis: 100px;
+    //                             @include bd(red);
+    //                              @include center();
+            
+    //                              span{
+    //                                  font-size: 0.8em;
+    //                                  padding:6px 21px;
+    //                                  background: $red;
+    //                                 border-radius: 2em;
+    //                                 color:white;
+    //                              }
+    //                         }
+            
+    //                     }
+    //                 }
+    //             }
+    //         }
+
+    //     }
+    //     .bot{
+    //         @include bd(green);
+    //     }
+    // }
+}
+
+}
