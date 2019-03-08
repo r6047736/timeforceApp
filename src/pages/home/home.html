@@ -4,11 +4,162 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title></ion-title>
+    <ion-buttons end>
+        <div class="avatar" (tap)="openProfile()" >
+          <img [src]="(auth.user$ | async )?.photoURL" />
+        </div>
+      </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
-<ion-content fullscreen no-bounce padding >
-  <div class="container">
+<ion-content fullscreen no-bounce  >
+
+
+
+<div class="container">
+    <div class="section editProfile"
+     (tap)="openEditProfile()"
+     [hidden]="  !((auth.user$ |async)?.displayName == null ||  (auth.user$ |async)?.displayName == '' ) ">
+       
+         <div class="content"  >
+            完善基本信息
+          </div>
+      </div>
+
+
+      <div class="section todo">
+          <div class="title">
+            今日事项
+          </div>
+           <div class="content" >
+              <div class="left">
+              
+                 <circle-progress 
+                 [responsive]="true"
+                 [animationDuration]=300
+                 [percent]=" todo ? (todo?.overTodayTasks.done.length / (todo?.overTodayTasks.done.length + todo?.overTodayTasks.pending.length + todo?.overTodayTasks.running.length  ) * 100) : 0  "
+                 [maxPercent]="100"
+             
+       
+                
+                
+                 [outerStrokeWidth]="16"
+                 [outerStrokeColor]="'rgb(255,147,81)'"
+                 [showZeroOuterStroke]="false"
+                 [backgroundStroke]="'rgba(255,147,81,0.3)'"
+               [backgroundStrokeWidth]="3"
+               [outerStrokeGradient]="true"
+               [outerStrokeGradientStopColor]="'rgb(255,100,81)'"
+               [showInnerStroke]="false"
+                 >
+
+                 </circle-progress>
+              </div>
+              <div class="right">
+
+                <div class="tasks">
+                   
+                  <div class="number"> {{todo?.overTodayTasks.pending.length}}</div>
+                  <div class="text">未开始</div>
+                </div>
+                <div class="tasks">
+                    <div class="number">{{todo?.overTodayTasks.done.length}}</div>
+                    <div class="text">已完成</div>
+                  </div>
+                  <div class="tasks">
+                      <div class="number">{{todo?.overTodayTasks.done.length + todo?.overTodayTasks.pending.length + todo?.overTodayTasks.running.length }}</div>
+                      <div class="text">总共</div>
+                    </div>
+
+              </div>
+  
+            </div>
+        </div>
+
+  
+    <div class="section today">
+        <div class="title">
+          今日专注
+        </div>
+         <div class="content" *ngIf=" todaysTask$ | async as todayTasks ">
+           
+
+            <div class="left">
+              <div class="text">
+                  专注次数
+              </div>
+              <div class="number">
+                  {{todayTasks.length || 0 }}
+              </div>
+            </div>
+            <div class="right">
+                <div class="text">
+                    成功
+                </div>
+                <div class="number">
+                    {{successfulTask.length}}
+                </div>
+            </div>
+
+          </div>
+      </div>
+
+      <div class="section currentTask">
+          <div class="title">
+            上一次任务
+          </div>
+
+           <div class="content" *ngIf=" ( task.currentTask$ | async ) as t "> 
+             <div class="progress">
+               <div class="val" [style.width]="  (progress$ | async ) ?  (progress$ | async ) : '10%' "  >
+
+               </div>
+             </div>
+            <div class="left">
+                
+                <div class="name">
+                {{t.title}}
+                </div>
+              
+                <div class="info">
+                  模式: {{ t.hardcore? ' 硬核':'普通'}}
+                </div>
+                <div class="info">
+                    时长: {{t.totalTime}} + {{t.relaxTime}}
+                </div>
+                <div class="info">
+                    {{ t.startTask | amLocal | amTimeAgo }}
+                </div>
+               
+            </div>
+            <div class="right">
+              <div class="status">
+                {{ t.status == 2 ? '完成' : t.status == 1 ? '进行中' : '中断' }}</div>
+              <div class="ago">  </div>
+            </div>
+
+
+            
+           </div>
+      
+        </div>
+
+
+  <div class="section room">
+    <div class="title">
+      我的房间
+    </div>
+      <room *ngIf=" (auth.user$ | async) as user  "
+       [roomId]="user.roomId"
+       (tap)="enterRoom()" ></room>
+
+  </div>
+
+</div>
+
+
+  <div class="container" [hidden]="true">
     <p>Wether you are using any </p>
 <button (click)="start()">open</button>
 <button (click)="motivation()" >page</button>

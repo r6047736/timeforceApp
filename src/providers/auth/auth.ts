@@ -17,6 +17,7 @@ import {auth} from 'firebase/app';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { switchMap } from 'rxjs/operators';
+import { PresenceProvider } from '../presence/presence';
 
 
 
@@ -29,8 +30,7 @@ import { switchMap } from 'rxjs/operators';
 @Injectable()
 export class AuthProvider {
 
-  userId: string;
-
+ 
 
   user$: Observable<any>;
   uid: any;
@@ -40,37 +40,22 @@ export class AuthProvider {
   //userStatusFirestoreRef: AngularFirestoreDocument<any>;
 
 
-  constructor(private afAuth: AngularFireAuth,
+  constructor(public afAuth: AngularFireAuth,
     private afs: AngularFirestore,
+    private presence: PresenceProvider
    
   ) {
     const self = this;
 
-
-    var isOfflineForFirestore = {
-      state: 'offline',
-      last_changed: firebase.firestore.FieldValue.serverTimestamp(),
-  };
-  
-  var isOnlineForFirestore = {
-      state: 'online',
-      last_changed: firebase.firestore.FieldValue.serverTimestamp(),
-  };
-
-
-
     this.user$ = this.afAuth.authState.pipe(switchMap( user =>{
-
+      //console.log("auth state = ", user)
       if (user){
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
       }
       else{
-        this.loginNoname();
+       
         return of(null);
       }
-
-
-
     }))
 
 
@@ -78,15 +63,18 @@ export class AuthProvider {
      
 
       this.user$.subscribe((data => {
-        console.log(data);
-        if (!data && self.uid){
+     
+        if (!data && !this.uid){
          
+         this.loginNoname();
+          return;
+        }
+        if (!data && this.uid){
           return;
         }
           
         if (data && data.uid) {
           this.userdata = data;
-          //console.log("line 55", data)
           this.uid = data.uid;
           this.userRef = this.afs.doc<User>(`users/${data.uid}`);
           //console.log("user.subscribe trigger, this.user.auth", data)
@@ -98,21 +86,9 @@ export class AuthProvider {
   }
 
 
-  private updateStatus(status: string) {
-    if (!this.userId) return
+ 
 
-    //this.db.object('users/' + this.userId).update({ status: status });
-
-
-  }
-
-  private updateOnconnect() {
-    // return this.db.object('.info/connected').valueChanges().subscribe
-    //   (connected => {
-    //     console.log(connected);
-    //     //let status = connected.$value
-    //   })
-  }
+  
 
   public async signInGoogle() {
 
@@ -127,8 +103,9 @@ export class AuthProvider {
       this.updateUserData(data.user)
     })
   }
-   signOut(){
-    this.afAuth.auth.signOut();
+   async signOut(){
+    await this.presence.setPresence('offline');
+    await this.afAuth.auth.signOut();
   }
 
   async oAuthLogin() {
@@ -143,7 +120,7 @@ export class AuthProvider {
       uid:user.uid,
       email: user.email,
       displayName: user.displayName ,
-      photoURL: user.photoURL ,
+      photoURL: user.photoURL ? user.photoURL : 'https://firebasestorage.googleapis.com/v0/b/timeforce-de19c.appspot.com/o/avatar%2FgJXVCkkJGxdNcAN7EWSZ8BrBxfl21549937986435.jpeg?alt=media&token=b9fbfa9e-0d9e-4f8f-90a3-e5f333ca3641',
       gender: user.gender || "", 
       login_time: new Date()
     }
@@ -170,12 +147,21 @@ export class AuthProvider {
   }
 
   updateUserGender(gender){
-    if (this.uid){
+    
       return this.afs.doc(`users/${this.uid}`).set({
         gender: gender,
       }, {
         merge:true})
-    }
+    
+    
+  }
+  updateUserAvatar(avatar){
+   
+      return this.afs.doc(`users/${this.uid}`).set({
+        photoURL: avatar,
+      }, {
+        merge:true})
+    
   }
 
 

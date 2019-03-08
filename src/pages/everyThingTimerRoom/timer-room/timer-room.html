@@ -1,0 +1,100 @@
+<!--
+  Generated template for the TimerRoomPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <div class="container">
+      <div class="header">
+
+      </div>
+      <div class="body"></div>
+      <div class="footer">
+
+      </div>
+  </div>
+
+  
+
+</ion-content> -->
+
+<ion-header no-border>
+  <ion-navbar transparent [hideBackButton]="false">
+    <ion-title></ion-title>
+    <ion-buttons left>
+      <button (tap)="back()">
+        <ion-icon name="arrow-back" *ngIf="stage != 1 && stage != 2">
+        </ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button (tap)="openSetting()">
+        <ion-icon name="custom-timer" *ngIf="stage != 1 && stage != 2">
+        </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div class="container">
+    <div class="usersList">
+      <user-working-status *ngFor="let user of users" [uid]="user.uid">
+      </user-working-status>
+    </div>
+
+    <div class="body">
+      <div class="title">{{ task.currentTask?.title }}</div>
+      <div class="warn" *ngIf="!task.currentTask" (tap)="openSetting()">
+        创建任务
+      </div>
+      <div class="count">{{ currentTime }}</div>
+    </div>
+    <div class="footer">
+      <div
+        class="start"
+        [ngClass]="{ disable: stage == 1 || stage == 2 }"
+        (click)="start()"
+      >
+        开始
+      </div>
+
+      <div class="operations" [ngClass]="{ hid: stage != 1 }">
+        <div class="pause" [ngClass]="{ movein: stage != 1 }"></div>
+        <div class="giveup" [ngClass]="{ movein: stage == 1 }" (tap)="giveUp()">
+          放弃
+        </div>
+      </div>
+
+      <div class="operations" [ngClass]="{ hid: stage != 2 }">
+        <div class="pause" [ngClass]="{ movein: stage == 2 }" (tap)="repeat()">
+          加一轮
+        </div>
+        <div class="giveup" [ngClass]="{ movein: stage == 2 }" (tap)="skip()">
+          跳过休息
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <timer
+    [hidden]="true"
+    (update)="updateTime($event)"
+    (finish)="finishEvent($event)"
+    (pause)="event($event)"
+    (fail)="failEvent($event)"
+    (end)="endCircle($event)"
+  ></timer>
+</ion-content>

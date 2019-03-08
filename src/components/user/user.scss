@@ -1,0 +1,83 @@
+user {
+
+    .user{
+        background: white;
+        margin-bottom: 15px;
+        border-radius: 2em;
+        
+       @include box-shadow(0, 5px, 10px, 0px, rgba(224, 224, 224, 0.199));
+
+        @include valign();
+        .avatar{
+           // flex-basis: 63px;
+          
+            padding: 10px;
+            .img{
+                position: relative;
+                height:42px;
+                width:42px;
+                border-radius: 21px;
+               
+               // overflow: hidden;
+                img{
+                    height:42px;
+                    width:42px;
+                    border-radius: 21px;
+                    overflow: hidden;
+                    display: block;
+                   
+                    @include square();
+                }
+                .status{
+                    position: absolute;
+                    bottom: 0px;
+                    right:0px;
+                    height:10px;
+                    width:10px;
+                    border-radius: 5px;
+                    //background: rgb(226, 226, 226);
+
+                    &.online{
+                        background: rgb(79, 206, 79);
+                    }
+                }
+               
+            }
+            
+        }
+        .text{
+            font-family: $font-md;
+            padding: 10px;
+            flex:1;
+            //@include bd(red);
+            text-align: left;
+           
+            .name{
+               
+                font-size: 1.2rem;
+
+                .gender{
+                    zoom: 0.7;
+                    &.male{
+                        color:rgb(158, 164, 250);
+                    }
+                    &.female{
+                        color:rgb(250, 158, 204);
+                    }
+                }
+            }
+       
+            .intro{
+                
+                padding: 3px 0px;
+                color:#c3c3c3;
+                font-size: 0.9rem;
+            }
+        }
+        .distance{
+            font-size: 1rem;
+            padding: 10px 20px 10px 10px;
+            //@include bd(red);
+        }
+    }
+}

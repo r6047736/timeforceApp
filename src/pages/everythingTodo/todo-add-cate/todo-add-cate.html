@@ -1,0 +1,58 @@
+<!--
+  Generated template for the TodoAddCatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar transparent>
+   
+  
+      <button float-right   style="font-size: 20px" >
+
+          <ion-icon class="confirm" [ngClass]="{available: title && title!='' && selectedColor }"
+             name="checkmark"
+             (tap)="confirm()"></ion-icon>
+      </button>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="container">
+      <ion-textarea class="name" 
+       [attr.rows]=1 
+        type="text" 
+         placeholder="项目名称"
+         [(ngModel)]="title"></ion-textarea>
+      <div class="colors">
+       
+          
+        <div class="color"
+         [ngClass]="{selected:selectedColor == c}" 
+         [style.background]="c"
+         *ngFor=" let c of colors"
+         (tap)="pickColor(c)">
+
+        </div>
+
+      </div>
+      <div class="mode">
+        <input type="checkbox" [(ngModel)]="minimalism" id="minis" style="display: none;">
+        <label for="minis" class="check"> 
+          <svg width="18px" height="18px" viewBox="0 0 18 18">
+            <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+            <polyline points="1 9 7 14 15 4"></polyline>
+          </svg>
+          极简模式
+        </label>
+      </div>
+
+     
+    
+  </div>
+
+</ion-content>

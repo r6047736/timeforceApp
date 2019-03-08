@@ -1,0 +1,85 @@
+page-todo-add-task {
+
+
+    ion-icon.confirm{
+        color:rgb(204, 204, 204);
+        &.available {
+            color: $red;
+        }           
+    }
+
+    .container{
+        font-family: $font-hf-reg;
+        @include padding();
+        margin-top: 100px;
+
+        .title{
+            font-size: 2em;
+        }
+        .name{
+            font-size: 1em;
+        }
+        .categories{
+            margin-top: 39px;
+            margin-left: 5px;
+            .category{
+                display: flex;
+            
+               
+
+                margin-bottom: 20px;
+                
+               
+                .color{
+                 
+                
+                    .circle{
+                        
+                        height: 20px;
+                        width: 20px;
+                        border-radius: 10px;
+                       // background: $red;
+                        border:3px solid $red;
+                        
+                    }    
+                }
+                .text{
+                    font-family: $font-hf-bold;
+                    margin-left: 20px;
+
+
+                }
+            }
+        }
+
+        .dates{
+          
+            display: flex;
+            .date{
+                font-family: $font-hf-bold;
+                display: inline-block;
+                padding: 0.6em 1.5em;
+                @include bd($red);
+                color: $red;
+                border-radius: 2rem;
+                margin-right: 10px;
+                font-size: 0.8em;
+                &.selected{
+                    background: $red;
+                    color:white;
+                }
+            }
+        }
+
+       
+     
+        
+    }
+
+
+
+
+    
+
+
+}

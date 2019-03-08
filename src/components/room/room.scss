@@ -1,0 +1,72 @@
+room {
+    .room{
+          
+        position: relative;
+        background-color: white;
+        display: inline-block;
+        margin-bottom:  1em ;
+        width: 100%;
+        min-height: 60px;
+        border-radius: 1vw;
+        padding: 5px;
+        @include box-shadow(0, 5px, 10px, 0px, rgba(224, 224, 224, 0.199));
+        text-align: left;
+        .color-bar{
+            position: absolute;
+            content: '';
+            display: block;
+            height:3px;
+            width:50%;
+            border-top-right-radius: 1.5px;
+            border-bottom-right-radius: 1.5px;
+            top:0px;
+            left:0px;
+        }
+        .icon{
+            min-height: 60px;
+            //@include center();
+            line-height: 60px;
+            padding-left: 10px;
+        
+        }
+        .title{
+            padding:10px 0px 0px 20px ;
+            font-size: 0.8em;
+            color:#3b3b3b;
+
+
+        }
+        .info{
+            font-size: 0.6em;
+            color: #c2c2c2;
+            padding: 5px 0px 5px 20px;
+
+        }
+        .users{
+            padding: 10px 10px 10px 20px;
+            
+            @include valign();
+            flex-wrap: wrap;
+            .avatar{
+                margin-right: 5px;
+                margin-bottom: 5px;
+                height: 20px;
+                width:20px;
+                border-radius: 10px;
+                background: rgb(201, 201, 201);
+                overflow: hidden;
+                img{
+                    @include square();
+
+                }
+                & .number{
+                    @include center();
+                    line-height: 20px;
+                    font-size: 0.8rem;
+                    color:gray
+                }
+            }
+        }
+
+      }
+}

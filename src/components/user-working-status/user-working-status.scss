@@ -1,0 +1,62 @@
+user-working-status {
+    .user{
+        margin: 5px;
+        margin-top: 20px;
+        position: relative;
+        @include center();
+        flex-direction: column;
+
+      
+
+        
+        .avatar{
+            @include center();
+             height: 60px;
+             width:60px;
+            // border-radius: 30px;
+            img{
+                display: block;
+                @include square;
+                height: 50px;
+                width:50px;
+                border-radius: 30px;
+            }
+
+        }
+        .progress{
+            margin: 10px 0px;
+            height: 2px;
+            width: 50px;
+            background: white;
+            border-radius: 1.5px;
+            position: relative;
+
+           
+            .val{
+                position: absolute;
+                height:2px;
+               // width:50%;
+                border-radius: 1.5px;
+                background: rgb(78, 241, 78);
+
+               
+            }
+        }
+        .time{
+            font-family: $font-reg;
+            letter-spacing: 1px;
+            font-size: 0.6em;
+            color:$red;
+            &.done{
+                color:green;
+            }
+
+        }
+        .button{
+            padding:5px 12px;
+            background: white;
+            margin-top: 10px;
+            
+        }
+    } 
+}

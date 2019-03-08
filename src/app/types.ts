@@ -10,22 +10,35 @@ export interface User {
 }
 
 export enum TaskStatus {
-    Idle ,
+    Idle = 0,
     Runing,
     Finish,
     Fail,
+    End,
+
     
 }
 
 export interface Task{
-
-    title: string
-    startTask: Date,
-    endTask:Date,
+    id:string,
+    title: string,
+    titlePublic?:boolean,
+    startTask: number,
+    endTask:number,
     totalTime:number,
     relaxTime:number,
     status:TaskStatus,
     uid?:string,
+    room?:string,
+    location?:string,
+    memo?:string,
+    createAt: number,
+    hardcore:boolean,
+    type:string // tomato , checkin, 
+}
+
+export class Task{
+    
 
 }
 

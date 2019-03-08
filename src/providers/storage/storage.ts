@@ -22,11 +22,15 @@ export class StorageProvider {
 
   }
 
-  async get(key){
-    return await this.st.get(key);
+   get(key){
+    return  this.st.get(key);
   }
   async set(key,val){
     return await this.st.set(key, val);
+  }
+
+  async remove(key){
+    return await this.st.remove(key);
   }
 
 

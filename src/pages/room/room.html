@@ -1,0 +1,145 @@
+<!--
+  Generated template for the RoomPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar transparent hideBackButton>
+      <ion-buttons left>
+          <button >
+       
+            <ion-icon name="arrow-back" navPop  ></ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title></ion-title>
+
+    
+    <ion-buttons end>
+        <button (tap)="exit()"  >
+            退出房间
+          </button>
+
+      <button (tap)="start(users)" *ngIf="(users$ | async ) as users " >
+        开始专注
+      </button>
+
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+
+  <div class="content" *ngIf=" room$ | async as room ">
+      <div class="section titles">
+          <div class="title">
+              {{room.roomName}}
+        
+          </div>
+          <div class="reminder">
+           {{ room.description || '每天2个番茄钟，美滋滋' }} 
+          </div>
+          <div class="exp-bar">
+            <div class="val" [style.background]="room.color" ></div>
+          </div>
+        </div>
+
+        <div class="section users">
+          <div class="title">
+           Overall  
+          </div>
+          <div class="body" *ngIf="(users$ | async ) as users  " >
+              
+              <user-working-status  [uid]="user.uid" *ngFor="let user of users " ></user-working-status>
+             
+             
+          
+               
+          </div>
+         
+        
+          
+
+        
+
+        </div>
+
+        <div class="section history">
+            <div class="title">
+              History
+              </div>
+              <div class="body" *ngIf=" history$ | async  as history">
+
+                <div class="event "  *ngFor=" let task of history ">
+                  <div class="icon">
+                      <div class="avatar">
+                        <img [src]="task.userAvatar">
+
+                      </div>
+                  </div>
+                  <div class="content" *ngIf=" task.data | async  as task"  >
+                    <div class="title">
+                      <div class="left">
+                          <span> {{ task.status==2 ? '完成任务': task.status==1 ? '进行中' : '失败' }}</span> {{ task.titlePublic? task.title : '' }}
+                      </div>
+                      <div class="right"  >
+                          
+                        <span *ngIf="task.status == 1"> 进行中</span>
+                        <span *ngIf="task.status != 1"> 
+                            {{task.endTask | amTimeAgo}}
+                        </span>
+                       
+                        
+                      </div>
+                     
+                    </div>
+                    <div class="info">
+                        <div class=""> 模式: {{ task.hardcore ? '硬核' : '普通' }}</div>
+                        <div class=""> {{task.totalTime}} 分钟</div>
+                        <!-- <div class=""> 看书</div> -->
+                    </div>
+                    
+                  </div>
+                </div>
+
+
+                <!-- <div class="event other">
+                    <div class="icon">
+                        <div class="avatar">
+                          <img src="../../assets/imgs/avatar.jpeg">
+  
+                        </div>
+                    </div>
+                    <div class="content">
+                      <div class="title">
+                        <div class="left">
+                            签到
+                        </div>
+                        <div class="right">
+                          1h
+                        </div>
+                       
+                      </div>
+                      <div class="info">
+                          <div class=""> 模式: 普通</div>
+                          <div class=""> 25分钟</div>
+                          <div class=""> 看书</div>
+                      </div>
+                      
+                    </div>
+
+                </div> -->
+             
+
+                </div>
+
+        </div>
+  </div>
+
+ 
+
+
+</ion-content>

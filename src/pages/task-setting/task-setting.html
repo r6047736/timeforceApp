@@ -1,0 +1,89 @@
+<!--
+  Generated template for the TaskSettingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--
+  Generated template for the EditProfileIntroPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+--><ion-header no-border>
+
+    <ion-navbar transparent>
+        <ion-title></ion-title>
+      
+        
+        <ion-buttons end> <button (click)="save()">Save </button> </ion-buttons>
+         
+      </ion-navbar>
+    
+    </ion-header>
+    
+    
+    <ion-content padding>
+     
+    <ion-list >
+        <ion-item class="name">
+            <ion-label stacked>任务名</ion-label>
+            <ion-textarea  [(ngModel)]="taskName" rows="1" type="text" maxlength="40"  ></ion-textarea>
+          </ion-item>
+
+          <ion-item>
+              <ion-label stacked>时长 (分钟)</ion-label>
+              <ion-textarea [(ngModel)]="totalLength" rows="1" type="number" name="totalLength" maxlength="2" ></ion-textarea>
+            </ion-item>
+            <div class="selection">
+              <div class="option" [ngClass]="{'selected':totalLength==10 }" (tap)="totalLength=10" > 10 </div>
+              <div class="option" [ngClass]="{'selected':totalLength==15 }" (tap)="totalLength=15"> 15</div>
+              <div class="option" [ngClass]="{'selected':totalLength==25 }" (tap)="totalLength=25"> 25 </div>
+              <div class="option" [ngClass]="{'selected':totalLength==30 }" (tap)="totalLength=30"> 30 </div>
+              <div class="option" [ngClass]="{'selected':totalLength==45 }" (tap)="totalLength=45"> 45 </div>
+              <div class="option" [ngClass]="{'selected':totalLength==60 }" (tap)="totalLength=60"> 60 </div>
+            </div>
+            <ion-item>
+                <ion-label stacked>休息时间</ion-label>
+                <ion-textarea [(ngModel)]="relaxLength" rows="1" type="tel" name="relaxLength" maxlength="2"></ion-textarea>
+              </ion-item>
+              <div class="selection">
+                  <div class="option"  [ngClass]="{'selected':relaxLength==10 }" (tap)="relaxLength = 10"> 10</div>
+                  <div class="option" [ngClass]="{'selected':relaxLength==5 }" (tap)="relaxLength = 5" >5</div>
+                </div>
+
+          
+
+            
+
+
+
+   
+         
+    </ion-list>
+
+    <ion-list>
+        <ion-item>
+            <ion-label>公开任务</ion-label>
+            <ion-toggle  [(ngModel)]="publicTitle"  ></ion-toggle>
+         
+          </ion-item>
+          <div class="description">
+              若公开标题择其他玩家均能看到你本次工作内容
+             </div>
+         
+    
+            <ion-item>
+                <ion-label>硬核模式</ion-label>
+                <ion-toggle disabled="true"  [(ngModel)]="hardcore"  ></ion-toggle>
+               
+              </ion-item>
+              <div class="description">
+                  硬盒模式下切换应用会导致任务失败 (目前版本只支持硬核模式)
+                 </div>
+
+    </ion-list>
+         
+      
+      
+    
+    </ion-content>

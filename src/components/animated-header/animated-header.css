@@ -1,0 +1,71 @@
+animated-header ion-header {
+  opacity: 0;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+}
+
+animated-header ion-header .toolbar {
+  padding-top: 11px !important;
+}
+
+animated-header ion-header.visible {
+  opacity: 1;
+}
+
+animated-header ion-header ion-title {
+  opacity: 0;
+  -webkit-transition: all 400ms ease-in-out;
+  -webkit-transform: translate(40px, 15px) !important;
+  -ms-transition: all 400ms ease-in-out;
+  -ms-transform: translate(40px, 15px);
+  -moz-transition: all 400ms ease-in-out;
+  -moz-transform: translate(40px, 15px);
+  transition: all 400ms ease-in-out;
+  transform: translate(40px, 15px);
+}
+
+animated-header ion-header ion-title.animate {
+  opacity: 1;
+  -webkit-transform: translate(40px, 0px) !important;
+  transform: translate(40px, 0px);
+}
+
+animated-header .toolbar-ios {
+  min-height: 56px;
+}
+
+animated-header .toolbar-ios ion-title {
+  padding-left: 10px !important;
+}
+
+animated-header .toolbar-ios .toolbar-title-ios {
+  text-align: left;
+}
+
+animated-header #fixed-menu-button .button-ios {
+  margin-top: -0.6rem;
+}
+
+animated-header #fixed-menu-button {
+  top: 10px;
+  position: absolute;
+  z-index: 999;
+  background-color: rgba(0, 0, 255, 0);
+}
+
+animated-header #fixed-menu-button > button {
+  background-color: rgba(0, 0, 255, 0) !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+animated-header #fixed-menu-button.visible ion-icon {
+  color: inherit !important;
+}
+
+animated-header ion-content .fixed-content {
+  margin-top: 0 !important;
+  background-size: auto;
+  background-position: right;
+}
+/*# sourceMappingURL=animated-header.css.map */

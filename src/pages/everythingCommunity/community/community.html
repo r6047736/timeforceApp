@@ -1,0 +1,184 @@
+<!--
+  Generated template for the CommunityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+  <ion-navbar transparent>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title></ion-title>
+
+    <ion-buttons end>
+      <div class="avatar" >
+        <img *ngIf=" auth.userdata  " [src]=" auth.userdata.photoURL " [navPush]="'profile'" />
+      </div>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="banner">
+      {{quote}}
+       
+    </div>
+    <div class="body">
+      <div class="sections">
+        <div class="section-rooms section" (tap)="goTo(0)" >
+          <span  [ngClass]="{'selected': tab==0 }" >学习室</span>
+        </div>
+        <div class="section-user section" (tap)="goTo(1)">
+          <span [ngClass]="{'selected': tab==1 }">在线</span>
+        </div>
+        <div class="section-fav section" (tap)="goTo(2)">
+          <span [ngClass]="{'selected': tab==2 }"> </span>
+        </div>
+      </div>
+      <ion-slides #slides (ionSlideWillChange)="swipeTo($event)" >
+        <ion-slide class="rooms">
+
+          <room  *ngFor=" let room of (rooms$ | async ) "
+           [roomId]="room.roomId" 
+           (tap)="goToRoom(room.roomId)" > </room>
+
+<!--         
+          <div class="room">
+              <div class="color-bar"></div>
+              <div class="icon">
+                  <ion-icon name="bookmarks"></ion-icon>
+              </div>
+            <div class="title">
+              读书
+            </div>
+            <div class="info">
+              10 / 20
+            </div>
+            <div class="users">
+                <div class="avatar" *ngFor="let o of [1,2,3]">
+                  <img src="../../../assets/imgs/avatar.jpeg" />
+                </div>
+                <div class="avatar">
+                    <span class="number">+20</span>
+                </div>
+            </div>
+          </div>
+
+          <div class="room">
+              <div class="color-bar"></div>
+              <div class="icon">
+                  <ion-icon name="bookmarks"></ion-icon>
+              </div>
+              <div class="title">
+                  吃饭
+                </div>
+                <div class="info">
+                    7 / 10
+                  </div>
+          </div>
+          <div class="room">
+              <div class="color-bar"></div>
+              <div class="title">
+                  写作业
+                </div>
+                <div class="info">
+                    5 / 20
+                  </div>
+
+          </div>
+          <div class="room">
+              <div class="color-bar"></div>
+              <div class="title">
+                  复习
+                </div>
+                <div class="info">
+                    1 / 2
+                  </div>
+
+          </div>
+          <div class="room">
+              <div class="color-bar"></div>
+              <div class="icon">
+                  <ion-icon name="bookmarks"></ion-icon>
+              </div>
+              <div class="title">
+                  背单词
+                </div>
+                <div class="info">
+                    1 / 1
+                  </div>
+          </div> -->
+        </ion-slide>
+        <ion-slide class="users">
+          <div class="tool-bar">
+
+          </div>
+         
+          <div class="content"   *ngIf=" allOnlineUsers$ | async as users ">
+
+            <user *ngFor="let user of users"  [uid]="user.key">
+
+            </user>
+              <!-- <user [uid]=" 'gJXVCkkJGxdNcAN7EWSZ8BrBxfl2' " ></user>
+              <user [uid]=" '64VYMelmNmRuXK1FGSD96QwwKDA3' " ></user>
+              <user [uid]=" 'mzsMBpfHDybRq3IbEVjwFO9f3YN2' " ></user> -->
+              
+            <!-- <div class="user" *ngFor="let f of [1,2,3,4,5]">
+
+            <div class="avatar">
+             <div class="img">
+               <img src="../../../assets/imgs/avatar.jpeg" />
+               <div class="status online">
+
+               </div>
+             </div>
+
+            </div>  
+            <div class="text">
+              <div class="name">老哥</div>
+              <div class="intro">寻找书友</div>
+            </div>
+            <div class="distance">
+              1.2km
+            </div>
+
+
+            </div> -->
+          </div>
+
+        </ion-slide>
+        <ion-slide class="fav">
+            <div class="tool-bar">
+
+              </div>
+              <div class="content">
+                <!-- <user [uid]=" 'gJXVCkkJGxdNcAN7EWSZ8BrBxfl2' " ></user> -->
+                <!-- <div class="user" *ngFor="let f of [1,2,3,4,5]">
+    
+                <div class="avatar">
+                 <div class="img">
+                   <img src="../../../assets/imgs/avatar.jpeg" />
+                   <div class="status online">
+    
+                   </div>
+                 </div>
+    
+                </div>  
+                <div class="text">
+                  <div class="name">老哥</div>
+                  <div class="intro">寻找书友</div>
+                </div>
+                <div class="distance">
+                  1.2km
+                </div>
+    
+    
+                </div> -->
+              </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+</ion-content>

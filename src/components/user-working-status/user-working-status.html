@@ -1,0 +1,30 @@
+<!-- Generated template for the UserWorkingStatusComponent component -->
+
+
+<div class="user" *ngIf=" ( data$ | async ) as user " >
+       
+                 
+                
+  <div class="avatar" [navPush]="'profile'"  [navParams]="{uid:user.uid}"  >
+    <img   [src]="user.photoURL || '../../assets/imgs/avatar.jpeg' ">
+  </div>
+  
+
+
+ 
+
+  <div class="progress">
+    <div class="val" [style.width]="precentageVal"  >
+
+    </div>
+    
+  </div>
+  
+
+  <div class="time" [ngClass]="{'done': timeStr =='完成'}" >{{timeStr}}</div>
+  <!-- <button class="button" *ngIf="user.uid == auth.uid" (tap)="exit()"> 退房</button>
+  <button  class="button" *ngIf="user.uid == auth.uid" (tap)="start(users)"> 开始学习</button>
+   -->
+  <div *ngIf=" ( presence$ | async ) as presence " > </div>
+ 
+</div>

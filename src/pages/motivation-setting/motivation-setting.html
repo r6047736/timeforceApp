@@ -7,7 +7,10 @@
 <ion-header no-border>
 
   <ion-navbar transparent>
-    <ion-title> 自省室 </ion-title>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title> 给自己的话 </ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -52,7 +55,7 @@
               <div class="title">最近的短期目标</div>
               <div class="input-content">
                 <ion-item>
-                  <ion-textarea [(ngModel)]="motivation.motivationData.shortTermGoal" rows="2" [spellcheck]="true" placeholder="坚持克服拖延症21天, 坚持记录"></ion-textarea>
+                  <ion-textarea [(ngModel)]="motivation.motivationData.shortTermGoal" rows="2" [spellcheck]="true" placeholder="每天6个番茄钟, 坚持记录"></ion-textarea>
                 </ion-item>
               </div>
               <div class="next">
@@ -74,7 +77,7 @@
               <div class="title">你的最终梦想</div>
               <div class="input-content">
                 <ion-item>
-                  <ion-textarea [(ngModel)]="motivation.motivationData.longTermGoal" rows="1" [spellcheck]="true" placeholder="创造一个完全沉浸式的武侠VR世界..."></ion-textarea>
+                  <ion-textarea [(ngModel)]="motivation.motivationData.longTermGoal" rows="1" [spellcheck]="true" placeholder="..."></ion-textarea>
                 </ion-item>
               </div>
               <div class="next">
@@ -128,7 +131,7 @@
 
               </div>
               <ion-item>
-                  <ion-textarea [(ngModel)]="motivation.motivationData.roleModel" rows="1" [spellcheck]="true" placeholder="Your role model"></ion-textarea>
+                  <ion-textarea [(ngModel)]="motivation.motivationData.roleModel" rows="1" [spellcheck]="true" placeholder="你身边那个靠自己努力的比你厉害的人"></ion-textarea>
                 </ion-item>
 
       

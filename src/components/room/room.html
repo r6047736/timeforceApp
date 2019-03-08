@@ -1,0 +1,17 @@
+<!-- Generated template for the RoomComponent component -->
+
+<div class="room"  *ngIf="  (room$ | async)  as room"   >
+    <div class="color-bar" [style.background]="room.color" ></div>
+    
+    <div class="icon">
+       <ion-icon [style.color]="room.color" [name]="room.icon || 'bookmarks' "></ion-icon>
+   </div>
+
+    <div class="title">
+       {{room.roomName}}
+     </div>
+     <div class="info">
+       {{ length || 0 }} / {{room.max}}
+
+     </div>
+ </div>

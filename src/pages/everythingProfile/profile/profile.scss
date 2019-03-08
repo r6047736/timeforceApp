@@ -33,12 +33,7 @@ page-profile {
           rgba(0, 0, 0,0.9) 100%
         );
       }
-      @mixin box-shadow($top, $left, $blur, $spread, $color, $inset:"") {
-
-        -webkit-box-shadow:$top $left $blur $spread $color #{$inset};
-        -moz-box-shadow:$top $left $blur $spread, $color #{$inset};
-        box-shadow:$top $left $blur $spread $color #{$inset};
-      }
+   
 
 ion-content{
 background: #f8f8f8 !important;
@@ -51,13 +46,20 @@ background: #f8f8f8 !important;
     .info{
         display:flex;
         .left{
+            flex-basis:   20vw;
             padding-right: 30px;
             .avatar{
               
                 height: 20vw;
                 width: 20vw;
                 border-radius: 10vw;
-                background: white;
+                img{
+                    display: block;
+                    @include square();
+                    height: 20vw;
+                width: 20vw;
+                border-radius: 10vw;
+                }
             }
 
 
@@ -65,12 +67,18 @@ background: #f8f8f8 !important;
         .right{
             font-family: $font-md;
             .name{
-               
-              
                 font-weight: bold;
                 font-size: 1.5em;
                 color:#313333;
-                //letter-spacing: ;
+              
+                .gender{
+                    &.male{
+                        color:rgb(158, 164, 250);
+                    }
+                    &.female{
+                        color:rgb(250, 158, 204);
+                    }
+                }
             }
             .intro{
                 margin: 10px 0px;
@@ -134,174 +142,124 @@ font-size: 1.1em;
         }
         .content{
            // padding: 20px;
-            .event{
-                margin-bottom: 3vh;
-                background: #fcfcfc;
-                min-height: 100px;
-                border-radius: 5px;
-              @include box-shadow(-3px, 0px , 20px , 0px, rgba(0, 0, 0, 0.02));
-              //-webkit-box-shadow: 0px 0px 45px -27px rgba(0,0,0,1);
-                display: flex;
-                
 
-                .left-section{
-                   
-                    flex-basis: 20%;
-                    @include center();
-                    ion-icon{
-                    
-                        zoom: 1.5;
-                        color: #BABCC9;
-                    }
-
-                    
-                }
-                .right-section{
-                    flex:1;
-                   // @include bd(red);
-                    padding:20px 10px ;
-
-
-                    .eventTitle{
-                        font-family: $font-md;
-                        color: #aeb0bc;
-                        display: flex;
-                        
-                        .left{
-                            font-size: 0.9em;
-                            flex:1;
-                        }
-                        .right{
-                            padding-right:10px;
-                            font-family: $font-reg;
-                            font-size: 0.9em;
-                        }
-                    }
-                    .content{
-                        margin-top: 5px;
-                        font-size: 0.8em;
-                        color: #aeb0bc;
-                    }
-                 
-                }
-                
+           .event2{
+            display: flex;
+            background: white;
+            @include box-shadow(0, 5px, 10px, 0px, rgba(224, 224, 224, 0.199));
+            border-radius: 1em;
+            padding: 15px;
+            margin-bottom: 20px;
+        
+            .icon{
+                @include center();
+                flex-basis: 10vw;
             }
+            &.other{
+        
+                img{ 
+                    @include square();
+                    height:20px !important;
+                    width:20px !important;
+                    border-radius: 5px !important;
+                }
+            }
+        
+            .content{
+                
+                flex:1;
+                padding-left: 15px;
+                .title{
+                    margin: 0px;
+                    display: flex;
+                    color:#48484b;
+                    .left{
+                        text-transform: capitalize;
+                        
+                        font-size: 0.9em;
+                        flex:1;
+                        span{
+                            color:grey;
+                            font-size: 0.9em;
+                            font-family: $font-reg;
+                        }
+                    }
+                    .right{
+                        font-family: $font-reg;
+                        font-size: 0.8em;
+                    }
+                }
+                .info{
+                    color:#7d7e81;
+                    font-size: 0.7em;
+                    display: block;
+                    div{
+                    //    @include bd(red);
+                        display: block;
+                    }
+                    
+                }
+            }
+            
+        }
+
+            // .event{
+            //     margin-bottom: 3vh;
+            //     background: #fcfcfc;
+            //     min-height: 100px;
+            //     border-radius: 5px;
+            //   @include box-shadow(-3px, 0px , 20px , 0px, rgba(0, 0, 0, 0.02));
+            //   //-webkit-box-shadow: 0px 0px 45px -27px rgba(0,0,0,1);
+            //     display: flex;
+                
+
+            //     .left-section{
+                   
+            //         flex-basis: 20%;
+            //         @include center();
+            //         ion-icon{
+                    
+            //             zoom: 1.5;
+            //             color: #BABCC9;
+            //         }
+
+                    
+            //     }
+            //     .right-section{
+            //         flex:1;
+            //        // @include bd(red);
+            //         padding:20px 10px ;
+
+
+            //         .eventTitle{
+            //             font-family: $font-md;
+            //             color: #aeb0bc;
+            //             display: flex;
+                        
+            //             .left{
+            //                 font-size: 0.9em;
+            //                 flex:1;
+            //             }
+            //             .right{
+            //                 padding-right:10px;
+            //                 font-family: $font-reg;
+            //                 font-size: 0.9em;
+            //             }
+            //         }
+            //         .content{
+            //             margin-top: 5px;
+            //             font-size: 0.8em;
+            //             color: #aeb0bc;
+            //         }
+                 
+            //     }
+                
+            // }
         }
     }
 }
-
-
-   
-
-
-   // background-image: url('https://s3.amazonaws.com/media.briantracy.com/blog/wp-content/uploads/2015/12/07130244/Steve-Jobs-The-Only-Way-inspirational-quote.png');
-   // background-size: 50%;
-    // .fixed-container{
-    //     display: flex;
-    //     flex-direction: column;
-    //     height: 100%;
-    //     width:100%;
-
-
-    //     .top{
-    //         top:0px;
-    //        // @include bd(red);
-    //         position: relative;
-    //         flex:3;
-          
-
-    //         .img{
-    //             position: absolute;
-    //             height: 100%;
-    //             width:100%;
-    //             background-image: url('http://img.sanhao.com/community_news/28318/2018090614513325.jpg');
-    //             background-size: cover;
-    //             background-position: center;
-    //         }
-    //         .mask{
-                              
-    //             position: absolute;
-    //             bottom: 0px;
-    //            // @include bd(red);
-    //             height:100px;
-    //             width:100%;
-    //             @include gradient();
-
-    //         }
-            
-            
-          
-          
-          
-    //     }
-    //     .mid{
-    //        // @include bd(blue);
-    //         flex:2;
-
-    //         ion-slides{
-    //             @include bd(red);
-    //             ion-slide{
-    //                 @include bd(red);
-
-    //                 &#slide1{
-    //                     display: flex;
-    //                     align-items: flex-start;
-    //                     .info{
-    //                        // position: absolute;
-                          
-    //                         width: 100%;
-                           
-    //                         display: flex;
-    //                         padding:10px 0px;
-                          
-    //                         .left{
-    //                             z-index: 2;
-    //                             padding-left:30px;
-    //                             flex:1;
-    //                             @include bd(red);
-    //                             @include valign();
-            
-    //                             .avatar{
-    //                                // @include bd(red);
-    //                                padding:5px;
-    //                                 div{
-    //                                     height: 64px;
-    //                                     width:64px;
-    //                                     border-radius: 32px;
-    //                                    @include img('https://static01.nyt.com/images/2011/03/13/arts/COOPER/COOPER-jumbo-v2.jpg');
-                                    
-    //                                 }
-    //                             }
-                               
-                               
-    //                         }
-    //                         .right{
-    //                             flex:1;
-    //                             z-index: 2;
-    //                             padding-right:30px;
-    //                             //flex-basis: 100px;
-    //                             @include bd(red);
-    //                              @include center();
-            
-    //                              span{
-    //                                  font-size: 0.8em;
-    //                                  padding:6px 21px;
-    //                                  background: $red;
-    //                                 border-radius: 2em;
-    //                                 color:white;
-    //                              }
-    //                         }
-            
-    //                     }
-    //                 }
-    //             }
-    //         }
-
-    //     }
-    //     .bot{
-    //         @include bd(green);
-    //     }
-    // }
 }
+
+
 
 }

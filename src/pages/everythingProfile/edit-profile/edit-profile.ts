@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheet, ActionSheetController, ToastController } from 'ionic-angular';
 import { AuthProvider } from '../../../providers/auth/auth';
+import { ImageProcessingProvider } from '../../../providers/image-processing/image-processing';
 
 /**
  * Generated class for the EditProfilePage page.
@@ -29,12 +30,13 @@ export class EditProfilePage {
      public navParams: NavParams,
      public auth:AuthProvider,
      public action:ActionSheetController,
-     public tost: ToastController) {
+     public tost: ToastController,
+     public image: ImageProcessingProvider) {
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EditProfilePage');
+  
     if (this.auth.userRef){
       let o =   this.auth.userRef.get().subscribe((data)=>{
 
@@ -46,12 +48,12 @@ export class EditProfilePage {
   }
 
   async changeGender(){
-    console.log('changing gender')
+  
       const actionSheet =  this.action.create({
       title:'性别',
         buttons: [{
           text: '男生',
-          icon: 'male',
+          icon: 'custom-male',
           handler: () => {
             this.auth.updateUserGender('male').then(()=>{
               this.tost.create({
@@ -63,7 +65,7 @@ export class EditProfilePage {
           }
         }, {
           text: '女生',
-          icon: 'female',
+          icon: 'custom-female',
           handler: () => {
             this.auth.updateUserGender('female').then(()=>{
               this.tost.create({
@@ -75,7 +77,7 @@ export class EditProfilePage {
           }
         }, {
           text: '不愿透露',
-          icon: 'heart',
+          icon: 'custom-gender',
           handler: () => {
             this.auth.updateUserGender('unknown').then(()=>{
               this.tost.create({
@@ -100,6 +102,45 @@ export class EditProfilePage {
   
 
   
+
+
+    changeAvatar(){
+    
+      const actionSheet =  this.action.create({
+     
+          buttons: [{
+            text: '拍照',
+            // icon: 'male',
+            handler: () => {
+              this.image.getImage('camera','').then((data)=>{
+                this.image.uploadAvatar(data);
+              });
+            }
+          }, {
+            text: '相册',
+            // icon: 'female',
+            handler: () => {
+              this.image.getImage('','').then((data)=>{
+                this.image.uploadAvatar(data);
+              });;
+            }
+          }
+          , {
+            text: '取消',
+            // icon: 'close',
+            role: 'cancel',
+            handler: () => {
+            
+            }
+          }]
+        });
+         actionSheet.present();
+
+   
+
+
+    }
+
 
 
   goTo(val){

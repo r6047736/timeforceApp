@@ -33,17 +33,7 @@ export class TimerComponent {
   @Output("end") endEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
-  @Input("totalTime") set totalTime(value: number){
-    console.log('setting timer ', value)
-    this.tm.totalTime = value ;
-    this.tm.reset(value);
-  }
-  @Input("totalRelax") set totalRelax(value: number){
-    this.tm.reset(value); 
-    this.tm.relaxTime = value ;
-     
-
-  }
+  
   
 
   

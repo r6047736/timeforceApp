@@ -85,7 +85,7 @@ export class DataProvider {
   successCircle(){
    // console.log('current, ', this.currentCircle);
     this.currentCircle.status = TaskStatus.Finish;
-    this.currentCircle.endTask  = new Date(); 
+    this.currentCircle.endTask  = Date.now(); 
     this.updateTasks()
   }
   

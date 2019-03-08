@@ -1,0 +1,210 @@
+<!--
+  Generated template for the TodoListDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar transparent>
+    <ion-title></ion-title>
+    <button float-right   style="font-size: 20px" >
+      <ion-icon name="custom-trash" (tap)="deleteCategory()"> </ion-icon>
+  </button>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  
+  <div class="container" padding>
+
+    <div class="header">
+      <div class="left">
+          <ion-icon  *ngIf="todos && todos.icon" [name]="todos.icon" [style.color]="todos?.color" ></ion-icon>
+          
+      </div>
+      <div class="right">
+        <div class="name">{{title}}</div>
+        
+        <div class="num"> {{todos?.todos.length}} 项任务</div>
+      </div>
+     
+     
+    
+
+    </div>
+
+   
+   
+
+
+  
+
+ 
+    <div class="todolist">
+      <div class="date">
+        Today
+      </div>
+
+      <ion-list no-lines>  
+          <ion-item-sliding   *ngFor="let td of todos?.todos" [hidden]="  (td.date > todo.todayD ||  td.date <= todo.beforeTodayD)  " >
+           
+              <ion-item  no-padding (tap)="check(td)">
+                  <input class="checkbox" type="checkbox" 
+               [id]="td.id" style="display: none;"
+               [(ngModel)]="td.check "
+               >
+            
+            <label [for]="td.id" class="check"   > 
+              <svg width="18px" height="18px" viewBox="0 0 18 18">
+                <path   d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                <polyline points="1 9 7 14 15 4"></polyline>
+              </svg>
+              <span class="text"  >
+              <div class="tit" [ngClass]="{selected: td.check == true}" >   {{td.title}}  {{ td.date | amTimeAgo }} </div>  
+           
+              </span>
+            </label>
+
+           
+              </ion-item>
+              <ion-item-options side="right">
+                  <div class="button delete" (tap)="deleteTodo(td)"   > <ion-icon name="custom-trash" > </ion-icon><span class="text" >删除</span></div>
+                <div class="button start" *ngIf="!td.startTime"  (tap)="setStartTime(td)"> <ion-icon name="custom-time" >  </ion-icon> <span class="text" >开始任务</span></div>
+                <div class="button start" *ngIf="td.startTime && !td.endTime " > <ion-icon name="custom-time"  >  </ion-icon> <span class="text" >{{td.startTime | amTimeAgo }}</span></div>
+                <div class="button start" *ngIf="td?.status=='done'"  > <ion-icon name="custom-time"  >  </ion-icon> <span class="text" >已完成</span></div>
+               
+
+               
+              </ion-item-options>
+          </ion-item-sliding>
+
+      </ion-list>
+     
+    </div>
+    <div class="todolist">
+        <div class="date">
+          Tomorrow
+        </div>
+  
+        <ion-list no-lines>  
+            <ion-item-sliding   *ngFor="let td of todos?.todos" [hidden]="  (   td.date <= todo.todayD || td.date > todo.tomorrowD) " >
+             
+                <ion-item  no-padding (tap)="check(td)" >
+                    <input class="checkbox" type="checkbox" 
+                 [id]="td.id" style="display: none;"
+                 [(ngModel)]="td.check"
+                 >
+              
+              <label [for]="td.id" class="check"   > 
+                <svg width="18px" height="18px" viewBox="0 0 18 18">
+                  <path   d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                  <polyline points="1 9 7 14 15 4"></polyline>
+                </svg>
+                <span class="text"  >
+                <div class="tit" [ngClass]="{selected: td.check == true}" >   {{td.title}}  </div>  
+               
+                </span>
+              </label>
+  
+             
+                </ion-item>
+                <ion-item-options side="right">
+                  <div class="button delete" (tap)="deleteTodo(td)"   > <ion-icon name="custom-trash" > </ion-icon><span class="text" >删除</span></div>
+                <div class="button start" *ngIf="!td.startTime"  (tap)="setStartTime(td)"> <ion-icon name="custom-time" >  </ion-icon> <span class="text" >开始任务</span></div>
+                <div class="button start" *ngIf="td.startTime && !td.endTime " > <ion-icon name="custom-time"  >  </ion-icon> <span class="text" >{{td.startTime | amTimeAgo }}</span></div>
+                <div class="button start" *ngIf="td?.status=='done'"  > <ion-icon name="custom-time"  >  </ion-icon> <span class="text" >已完成</span></div>
+               
+
+               
+              </ion-item-options>
+            </ion-item-sliding>
+  
+            <ion-item-sliding>   <ion-item>
+              <span><ion-icon name="custom-add"></ion-icon></span> Add
+            </ion-item></ion-item-sliding>
+
+            <div class="add">
+              
+            </div>
+        </ion-list>
+       
+      </div>
+
+      <div class="todolist">
+          <div class="date">
+            Later
+          </div>
+    
+          <ion-list no-lines>  
+              <ion-item-sliding   *ngFor="let td of todos?.todos" [hidden]=" td.date==null ||  (td.date && td.date <= todo.tomorrowD) " >
+               
+                  <ion-item  no-padding (tap)="check(td)">
+                      <input class="checkbox" type="checkbox" 
+                   [id]="td.id" style="display: none;"
+                   [(ngModel)]="td.check "
+                   >
+                
+                <label [for]="td.id" class="check"   > 
+                  <svg width="18px" height="18px" viewBox="0 0 18 18">
+                    <path   d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                    <polyline points="1 9 7 14 15 4"></polyline>
+                  </svg>
+                  <span class="text"  >
+                  <div class="tit" [ngClass]="{selected: td.check == true}" >    {{td.title}}  </div>  
+                 
+                  </span>
+                </label>
+    
+               
+                  </ion-item>
+                  <ion-item-options side="right">
+                    <div class="button delete" (tap)="deleteTodo(td)"   > <ion-icon name="custom-trash" > </ion-icon><span class="text" >删除</span></div>
+                  <div class="button start" *ngIf="!td.startTime"  (tap)="setStartTime(td)"> <ion-icon name="custom-time" >  </ion-icon> <span class="text" >开始任务</span></div>
+                  <div class="button start" *ngIf="td.startTime && !td.endTime " > <ion-icon name="custom-time"  >  </ion-icon> <span class="text" >{{td.startTime | amTimeAgo }}</span></div>
+                  <div class="button start" *ngIf="td?.status=='done'"  > <ion-icon name="custom-time"  >  </ion-icon> <span class="text" >已完成</span></div>
+                 
+  
+                 
+                </ion-item-options>
+              </ion-item-sliding>
+    
+          </ion-list>
+         
+        </div>
+    
+    <!-- <div class="list">
+        <div class="date">
+          Tomorrow
+        </div>
+          <div class="item" *ngFor="let todo of todos?.todos" >
+  
+  
+              <input class="checkbox" type="checkbox"  [id]="todo.id" style="display: none;">
+              
+              <label [for]="todo.id" class="check"> 
+                <svg width="18px" height="18px" viewBox="0 0 18 18">
+                  <path   d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                  <polyline points="1 9 7 14 15 4"></polyline>
+                </svg>
+                <span class="text">
+                
+                <div >  {{todo.title}}</div>  
+                <div style="font-size: 0.6em"> 开始于 1 小时前 </div>
+                </span>
+  
+              </label>
+  
+              <div class="ops">
+                <ion-icon name="custom-timer"></ion-icon>
+              </div>
+          </div>
+      </div> -->
+  </div>
+
+
+
+</ion-content>

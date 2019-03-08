@@ -16,38 +16,38 @@
 <ion-content padding>
 
   <div class="avatar">
-    <img class="" src="../../../assets/imgs/avatar.jpeg" >
-    <div class="text"> 修改头像 </div>
+    <img class="" [src]="  auth?.userdata?.photoURL ||  '../../../assets/imgs/avatar.jpeg' " >
+    <div class="text" (tap)="changeAvatar()"> 修改头像 </div>
   </div>
 
     <ion-list no-lines>
         <button ion-item class="line" (tap)="changeGender()">
         
-            <ion-icon class="icon" float-start name="man"></ion-icon>
-            <ion-icon class="edit" float-right name="create"></ion-icon>
-            <span class="val" float-right> {{  auth?.userdata?.gender  }}</span>
+            <ion-icon class="icon" float-start name="custom-gender"></ion-icon>
+            <ion-icon class="edit" float-right name="custom-right-arrow"></ion-icon>
+            <span class="val" float-right *ngIf="auth?.userdata" > {{  auth.userdata?.gender == "female" ? '女生' : auth.userdata?.gender == "male" ? '男生' : '保密'      }}</span>
    
           </button> 
 
         <button ion-item class="line"  (tap)="goTo('edit-userName')" >
-          <ion-icon class="icon" float-start name="male"></ion-icon>
-          <ion-icon class="edit" float-right name="create"></ion-icon>
+          <ion-icon class="icon" float-start name="custom-nickname"></ion-icon>
+          <ion-icon class="edit" float-right name="custom-right-arrow"></ion-icon>
           <span class="val" float-right>{{ auth?.userdata?.displayName }}</span>
  
         </button> 
     
           <button ion-item class="line" >
         
-              <ion-icon class="icon" float-start name="globe"></ion-icon>
-              <ion-icon class="edit" float-right name="create"></ion-icon>
+              <ion-icon class="icon" float-start name="custom-location2"></ion-icon>
+              <ion-icon class="edit" float-right name="custom-right-arrow"></ion-icon>
               <span class="val" float-right> 未知</span>
      
             </button> 
 
             <button ion-item class="line"  (tap)="goTo('edit-intro')" >
         
-                <ion-icon class="icon" float-start name="clipboard"></ion-icon>
-                <ion-icon class="edit" float-right name="create"></ion-icon>
+                <ion-icon class="icon" float-start name="custom-intro"></ion-icon>
+                <ion-icon class="edit" float-right name="custom-right-arrow"></ion-icon>
                 <span class="val" float-right> {{ auth?.userdata?.intro }}</span>
        
               </button> 

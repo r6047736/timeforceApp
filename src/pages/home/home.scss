@@ -1,10 +1,185 @@
 page-home {
    
+
+    ion-content{
+        background: #f8f8f8 !important;
+    }
     .container{
         width:100%;
         height:100%;
 
         @include center();
+        flex-direction: column;
+        padding-top: 60px;
+
+        
+       
+        
          
+
+        .section{
+           @include padding();
+           display:  block;
+            width:100%;
+            .title{
+                font-family: $font-hf-bold;
+                color: darken($color: #ffffff, $amount: 50);
+                margin:12px 0px;
+            }
+            .content{
+                background: white;
+                @include box-shadow(0, 5px, 10px, 0px, rgba(224, 224, 224, 0.199));
+                border-radius: 1vw;
+                padding:20px 10px;
+                @include valign();
+            }
+        }
+
+        .section.editProfile{
+            .content{
+                display: block;
+                text-align: center;
+                font-size: 0.7em;
+            }
+          
+        }
+        .section.todo{
+           .content{
+               min-height: 200px;
+            
+               display: flex;
+               @include valign();
+           // background: transparent;
+           background: transparent;
+          box-shadow: none;
+          align-items: stretch;
+            .left{
+                flex:1;
+            }
+            .right{
+                flex:1;
+                
+
+                display: flex;
+                flex-direction: column;
+                padding-left: 30px;
+              
+                .tasks{
+                    margin:5px;
+                 
+                    font-family: $font-hf-reg;
+                    flex:1;
+                   // margin-bottom:20px;
+                    .number{
+                        font-size: 1em;
+                        padding: 5px 0px;
+                    }
+                    .text{
+                        font-size: 0.8em;
+                        color:gray;
+                    }
+                }
+            }
+                
+           } 
+        }
+        .section.currentTask{
+            
+            .content{
+              padding-left: 20px;
+                @include valign();
+                position: relative;
+                .progress{
+                    position: absolute;
+                    display: block;
+                    top:0;
+                    left:0;
+                    width: 100%;
+                    height:3px ;
+                    .val{
+                        height: 100%;
+                      width:0%;
+                        background: $red;
+                    }
+                }
+
+                .left{
+                    flex:1;
+                    font-family: $font-hf-reg;
+                    .name{
+                        text-transform: capitalize;
+                        font-family: $font-hf-reg;
+                        font-size: 1.3em;
+                        margin-bottom: 5px;
+                    }
+                    .info{
+                        color: #868686;
+                        font-size: 0.8em;
+                        
+                    }
+                    
+                }
+                .right{
+                    @include center();
+                    //@include bd(red);
+                    flex-basis: 100px;
+                    flex-direction: column;
+                    .status{
+
+
+                    }
+                    .ago{
+                        font-size: 0.8em;
+                        color:rgb(141, 141, 141);
+                    }
+                }
+            
+            }
+        }
+        .section.today{
+            .content{
+                .left,
+                .right{
+                   // @include bd(red);
+                    text-align: center;
+                  //  @include center();
+                    flex-direction: column;
+                    flex:1;
+                    .text{
+                        font-family: $font-hf-reg;
+                        font-size: 1.3em;
+                        padding-bottom: 10px;
+                    }
+                    .number{
+                        font-size: 1.1em;
+                        font-family: $font-hf-reg;
+                    }
+
+
+                }
+                
+            }
+        }
+
+        .section.room{
+            room > .room{
+              
+                margin-bottom: 0px;
+            }
+            room > .title{
+                margin-top: 0px;
+                padding-top: 0px ;
+                padding-bottom: 0px;
+            }
+        }
+
+       
     }
+
+
+
+
+
+
+
 }

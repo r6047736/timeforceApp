@@ -1,0 +1,61 @@
+
+page-task-setting {
+  
+        ion-navbar{
+            //@include bd(red);
+            ion-buttons{
+                height: 100%;
+               // @include bd(red);
+             
+                button{
+                    font-family: $font-md;
+                    font-size: 1em;
+                    color:$red;
+                }
+            }
+        }
+        ion-content{
+            
+           
+      
+            ion-item{
+                @include bd(red);
+                ion-label{
+                    font-size: 0.8em;
+                }
+            }
+            &.name{
+               border:1px solid red !important;
+               margin-bottom: 30px;
+            } 
+    
+            .description{
+                padding:10px  15px;
+                font-size: 0.8em;
+                color:rgb(117, 117, 117);
+            }
+            .selection{
+                 padding:10px  15px;
+               
+                @include valign();
+                width:100%;
+                flex-wrap: wrap;
+                //justify-content: space-evenly;
+                .option{
+                   
+                    @include bd($red);
+                    border-radius: 2em;
+                    color:$red;
+                   text-align: center;
+                   padding: 9px 24px;
+                   margin: 0px 10px 10px 0px;
+                    &.selected{
+                        color:white;
+                        background: $red;
+                    }
+                }
+            }
+        }
+    }
+    
+

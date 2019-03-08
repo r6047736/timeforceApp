@@ -1,0 +1,133 @@
+page-todo-add-cate {
+
+
+        ion-icon.confirm{
+            color:rgb(204, 204, 204);
+            &.available {
+                color: $red;
+            }           
+        }
+
+        .container{
+            @include padding();
+            margin-top: 100px;
+
+            .name{
+                font-size: 1.5em;
+            }
+            .colors{
+                margin-top: 21px;
+             
+                min-height: 60px;
+                padding: 5px;
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                @include valign();
+                padding-right: 10px;
+               
+                .color{
+                 
+                    flex: 0 0 auto;
+                    margin-right: 10px;
+                   
+                    background: $red;
+                    
+                    height: 33px;
+                    width: 33px;
+                    position: relative;
+                    opacity: 0.6;
+                    border-radius: 2em;
+
+                    
+                   
+                    &.selected{
+                        opacity: 1;
+                        @include box-shadow(0, 5px, 10px, 0px, rgba(148, 148, 148, 0.24));
+           
+                    }
+
+                   
+
+                    
+                }
+              
+            }
+
+            .mode{
+            
+           
+              margin-top:10px;
+            
+              color:rgb(121, 121, 121);
+              padding-left: 10px;
+              line-height: 100%;
+              svg{
+                top:4px;
+                margin-right: 3px;
+              }
+
+
+            }
+         
+            
+        }
+
+
+
+
+.check {
+   
+    cursor: pointer;
+    position: relative;
+    margin: auto;
+    width: 18px;
+    height: 18px;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .check svg {
+      margin-right: 6px;
+    top:5px;
+  
+    position: relative;
+    z-index: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #c8ccd4;
+    stroke-width: 1.5;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease;
+  }
+  .check svg path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+  }
+  .check svg polyline {
+    stroke-dasharray: 22;
+    stroke-dashoffset: 66;
+  }
+  .check:hover:before {
+    opacity: 1;
+  }
+  .check:hover svg {
+    stroke: #4285f4;
+  }
+  #minis:checked + .check svg {
+    stroke: #4285f4;
+  }
+  #minis:checked + .check svg path {
+    stroke-dashoffset: 60;
+    transition: all 0.3s linear;
+    transition-delay: 0.15s;
+  }
+  #minis:checked + .check svg polyline {
+    stroke-dashoffset: 42;
+    transition: all 0.2s linear;
+    transition-delay: 0.15s;
+  }
+    
+
+}

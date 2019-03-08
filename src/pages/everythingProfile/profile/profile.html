@@ -1,78 +1,101 @@
 <ion-header no-border>
-    <ion-navbar  >
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title></ion-title>
+  
+    <ion-buttons end  >
+        <button (click)="follow(uid)"  *ngIf="uid != auth.uid" >
+            <ion-icon name="custom-follower"></ion-icon>
+        </button>
+      <button (click)="openSetting()" *ngIf="uid == auth.uid" >
+        <ion-icon name="custom-edit"></ion-icon>
       </button>
-      <ion-title></ion-title>
-      <ion-buttons end> <button (click)="openSetting()"> <ion-icon name="mail-open" ></ion-icon> </button> </ion-buttons>
-      <ion-buttons end> <button (click)="openSetting()"> <ion-icon name="create" ></ion-icon> </button> </ion-buttons>
-    </ion-navbar>
-  </ion-header>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 
-  <ion-content fullscreen no-bounce  >
-    <div class="container">
-        <div class="info">
-          <div class="left">
-<div class="avatar"></div>
-          </div>
-          <div class="right">
-            <div class="name"> Brain cook</div>
-            <div class="intro"> Student of Califoria and studying computer science and design, looking for jobs, work 9 to 5 everyday and need some fun</div>
-            <div class="location">
-
-              <ion-icon name="custom-location"> </ion-icon>
-              Fremont US
-            </div>
-          </div>
+<ion-content fullscreen no-bounce>
+  <div class="container" *ngIf="(userData$ | async) as user">
+    <div class="info">
+      <div class="left">
+        <div class="avatar">
+          <img [src]="user.photoURL" />
         </div>
-
-        <div class="statics">
-          <div class="section">
-            <div class="title">番茄钟</div>
-            <div class="number"> 50 </div>
-
-          </div>
-          <div class="section">
-              <div class="title">硬核模式</div>
-              <div class="number"> 10 </div>
-            </div>
-            <div class="section">
-                <div class="title">获赞</div>
-                <div class="number"> 20 </div>
-              </div>
-
+      </div>
+      <div class="right">
+        <div class="name">{{ user.displayName }} 
+            <ion-icon  class="gender male" *ngIf="user.gender=='male' " name="custom-male" > </ion-icon>
+             <ion-icon class="gender female" *ngIf="user.gender=='female'"  name="custom-female" > </ion-icon> 
         </div>
+        <div class="intro">{{ user.intro }}</div>
+        <div class="location">
+          <ion-icon name="custom-location"> </ion-icon>
+          未知
+        </div>
+      </div>
+    </div>
+
+    <div class="statics">
+      <div class="section">
+        <div class="title">番茄钟</div>
+        <div class="number">{{ (tasks$ | async)?.length || 0 }}</div>
+      </div>
+      <div class="section">
+        <div class="title">硬核模式</div>
+        <div class="number">{{ (hardcoreOnly$ | async)?.length || 0 }}</div>
+      </div>
+      <div class="section">
+        <div class="title">获赞</div>
+        <div class="number">0</div>
+      </div>
+    </div>
     <div class="activity">
       <div class="title">
         Activity
       </div>
-      <div class="content">
-        <div class="event" *ngFor="let f of [1,2,3,4]">
-          <div class="left-section">
-            <ion-icon name="custom-timer"></ion-icon>
+
+      <div class="content" *ngIf="(tasks$ | async) as tasks">
+        <div class="event2 " *ngFor="let task of tasks">
+          <div class="icon">
+            <div class="avatar">
+              <ion-icon name="custom-timer"></ion-icon>
+            </div>
           </div>
-          <div class="right-section">
-              <div class="eventTitle"> 
-                <div class="left"> Finish a pomorodo: read a book </div>
-                <div class="right"> 10 sec </div>
-               </div>
-              <div class="content"> 
-                <div class=""> 10 mins</div>
-                <div class=""> 10 mins</div>
+          <div class="content" *ngIf="task">
+            <div class="title">
+              <div class="left">
+                {{ task.titlePublic ? task.title : "" }} -
+                <span>
+                  {{
+                    task.status == 2
+                      ? "完成任务"
+                      : task.status == 1
+                      ? "进行中"
+                      : "失败"
+                  }}</span
+                >
               </div>
+              <div class="right">
+                <span *ngIf="task.status == 1"> 进行中</span>
+                <span *ngIf="task.status != 1">
+                  {{ task.endTask | amTimeAgo }}
+                </span>
+              </div>
+            </div>
+            <div class="info">
+              <div class="">模式: {{ task.hardcore ? "硬核" : "普通" }}</div>
+              <div class="">{{ task.totalTime }} 分钟</div>
+            </div>
           </div>
-        
         </div>
-       
       </div>
     </div>
-     
-    </div>
-     
+  </div>
+</ion-content>
 
-  </ion-content>
-  
-  <!-- <ion-content fullscreen no-bounce  >
+<!-- <ion-content fullscreen no-bounce  >
 
     <div class="fixed-container" ion-fixed >
         <div class="top" >
@@ -114,4 +137,3 @@
    
     
   </ion-content> -->
-

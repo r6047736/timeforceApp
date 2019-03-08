@@ -1,0 +1,120 @@
+<!--
+  Generated template for the TodoAddTaskPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-header no-border>
+
+  <ion-navbar transparent>
+   
+  
+      <button float-right   style="font-size: 20px" >
+
+          <ion-icon class="confirm"
+
+          [style.color]=" title && category ? category.color : 'rgb(204, 204, 204)'  "
+          
+             name="checkmark"
+             (tap)="addTaskToCategory()"></ion-icon>
+      </button>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="container">
+<ion-list no-lines>
+    <ion-item class="title">
+
+        新建任务
+      </ion-item>
+    <ion-item>
+      
+        <ion-textarea class="name" 
+        [attr.rows]=1 
+         type="text" 
+          placeholder="任务内容"
+          [(ngModel)]="title"></ion-textarea>
+    </ion-item>
+</ion-list>
+    
+   
+     <ion-scroll scrollY="true" class="categories" style="min-height:200px;" >
+        <div class="category" *ngFor="let todo of todo.todos" (tap)="pickCategory(todo)">
+          <div class="color" >
+            <div class="circle" 
+             [style.borderColor]="todo.color"
+             [style.background]=" todo == category ? todo.color :'white'  " >
+
+            </div>
+          </div>
+          <div class="text" >
+{{todo.title}}
+          </div>
+
+        </div>
+
+
+
+     </ion-scroll>
+
+     <ion-list no-lines >
+        <ion-item no-padding>
+            <ion-label>设定完成日期</ion-label>
+            <ion-datetime 
+            displayFormat="YYYY-MM-DD" 
+            picker-format="YYYY-MM-DD"
+            yearValues="2019,2020"
+            mode="ios"
+            min = "2019-01-01"
+            [(ngModel)]="datetime"
+            
+        
+            ></ion-datetime>
+          
+          </ion-item>
+          <ion-item no-padding>
+              <div class="dates" >
+                  <div class="date today"
+                  [ngClass]="{selected: datetime == today}"
+                   (tap)="setTime('today')"> 今日</div>
+                  <div class="date tomorrow"
+                  [ngClass]="{selected: datetime == tomorrow}"
+                   (tap)="setTime('tomorrow')" > 明日</div>
+                  <div class="date week"
+                  [ngClass]="{selected: datetime == week}"
+                   (tap)="setTime('week')"> 本周</div>
+                </div>
+          </ion-item>
+     </ion-list>
+
+     <!-- <div >today {{today | amDateFormat: 'YYYY-MM-DD HH:mm'}}</div>
+     <div >tomorrow {{tomorrow | amDateFormat: 'YYYY-MM-DD HH:mm'  }}</div>
+     <div >week {{week | amDateFormat: 'YYYY-MM-DD HH:mm'  }}</div>
+
+     <br/>
+
+
+     <div >before today {{todo.beforeTodayD | amDateFormat: 'YYYY-MM-DD HH:mm'  }}</div>
+     <div >today {{todo.todayD | amDateFormat: 'YYYY-MM-DD HH:mm'}}</div>
+     <div >tomorrow {{todo.tomorrowD | amDateFormat: 'YYYY-MM-DD HH:mm'  }}</div>
+     <div >week {{todo.weekD | amDateFormat: 'YYYY-MM-DD HH:mm'  }}</div> -->
+
+
+      
+    
+
+     
+    
+  </div>
+
+ 
+
+</ion-content>
+

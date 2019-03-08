@@ -1,10 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Keyboard } from 'ionic-angular';
+
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+
 //import { TimerPage } from '../pages/timer';
 import {TimerManagerProvider} from '../providers/timer-manager/timer-manager';
 
@@ -12,6 +14,7 @@ import {TimerManagerProvider} from '../providers/timer-manager/timer-manager';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { BackgroundMode } from '@ionic-native/background-mode';
 import { ToastController } from 'ionic-angular';
+import { AuthProvider } from '../providers/auth/auth';
 
 
 @Component({
@@ -24,19 +27,25 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar,
+  constructor(public platform: Platform, 
+    public statusBar: StatusBar,
      public splashScreen: SplashScreen,
      private tm :TimerManagerProvider,
     private ln: LocalNotifications,
     private backgroundMode: BackgroundMode,
-  private toast:ToastController) {
+  private toast:ToastController,
+  public auth:AuthProvider,
+  public Keyboard: Keyboard) {
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: '首页', component: HomePage },
-      { title: '排行榜', component: ListPage },
-      { title: '战斗', component: ListPage }
+      { title:'社区', component:'community'},
+      { title:'事项',component:'todo'},
+      
+     
     ];
 
   }
@@ -47,10 +56,11 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.Keyboard.hideFormAccessoryBar(false);
+  
+
       this.backgroundMode.enable();
      
-    
-
       console.log('is in background mode ? ',this.backgroundMode.isEnabled())
     });
 

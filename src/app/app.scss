@@ -28,11 +28,46 @@ ion-icon {
     }
   
     &[class*="custom-timer"] {
-      mask-image: url(/assets/icon/timer.svg);
+      mask-image: url(../assets/icon/timer.svg);
     }
     &[class*="custom-location"] {
-        mask-image: url(/assets/icon/location.svg);
+        mask-image: url(../assets/icon/location.svg);
       }
+      &[class*="custom-location2"] {
+        mask-image: url(../assets/icon/location2.svg);
+      }
+      &[class*="custom-male"] {
+        mask-image: url(../assets/icon/male.svg);
+      }
+      &[class*="custom-female"] {
+          mask-image: url(../assets/icon/female.svg);
+        }
+        &[class*="custom-nickname"] {
+          mask-image: url(../assets/icon/nickname.svg);
+        }
+        &[class*="custom-gender"] {
+          mask-image: url(../assets/icon/gender.svg);
+        }
+        &[class*="custom-intro"] {
+          mask-image: url(../assets/icon/intro.svg);
+        }
+        &[class*="custom-right-arrow"] {
+          mask-image: url(../assets/icon/right-arrow.svg);
+        }
+        &[class*="custom-edit"] {
+          mask-image: url(../assets/icon/edit.svg);
+        }
+        &[class*="custom-follower"] {
+          mask-image: url(../assets/icon/follower.svg);
+        }
+
+        &[class*="custom-time"] {
+          mask-image: url(../assets/icon/time.svg);
+        }
+        &[class*="custom-trash"] {
+          mask-image: url(../assets/icon/trash.svg);
+        }
+
 
 }
 input:focus,
@@ -76,6 +111,13 @@ $font-hf-bold:"HYQiHei-bold";
 $font-hf-reg:'HYQiHei-reg';
 
 
+@mixin box-shadow($top, $left, $blur, $spread, $color, $inset:"") {
+
+    -webkit-box-shadow:$top $left $blur $spread $color #{$inset};
+    -moz-box-shadow:$top $left $blur $spread, $color #{$inset};
+    box-shadow:$top $left $blur $spread $color #{$inset};
+  }
+  
 @mixin  img($url) {
     background-image:url($url);
     background-position: center;
@@ -90,11 +132,22 @@ $font-hf-reg:'HYQiHei-reg';
     border: 1px solid $color;
 }
 
-
+@mixin square(){
+    object-fit:cover; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+}
 @mixin center(){
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
 }
 
 
@@ -121,3 +174,39 @@ font-family: $font-hf-bold;
        
     }
 }
+
+
+
+
+ion-header {
+ // @include bd(red);
+    ion-buttons {
+     
+      margin-right:20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      .avatar {
+        height: 50px;
+        width: 50px;
+       
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        // overflow: hidden;
+        img {
+          display: block;
+          height: 50px;
+          width: 50px;
+          border-top-left-radius: 25px;
+          border-bottom-left-radius: 25px;
+          border-bottom-right-radius: 25px;
+
+          @include square();
+          overflow: hidden;
+        }
+      }
+    }
+  }
+  @mixin padding()  {
+    padding: 10px 25px 10px 50px;
+  }

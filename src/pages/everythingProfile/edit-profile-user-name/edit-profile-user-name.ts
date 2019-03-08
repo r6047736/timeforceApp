@@ -30,7 +30,7 @@ export class EditProfileUserNamePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EditProfileUserNamePage');
+  
     if (this.auth.userRef){
       let o =   this.auth.userRef.get().subscribe((data)=>{
          this.userName = data.data().displayName;

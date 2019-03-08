@@ -1,0 +1,161 @@
+body {
+  font: 12px arial;
+}
+
+ion-icon[class*="custom-"] {
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-position: 50% 50%;
+          mask-position: 50% 50%;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  background: currentColor;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+ion-icon[class*="custom-timer"] {
+  -webkit-mask-image: url(../assets/icon/timer.svg);
+          mask-image: url(../assets/icon/timer.svg);
+}
+
+ion-icon[class*="custom-location"] {
+  -webkit-mask-image: url(../assets/icon/location.svg);
+          mask-image: url(../assets/icon/location.svg);
+}
+
+ion-icon[class*="custom-location2"] {
+  -webkit-mask-image: url(../assets/icon/location2.svg);
+          mask-image: url(../assets/icon/location2.svg);
+}
+
+ion-icon[class*="custom-male"] {
+  -webkit-mask-image: url(../assets/icon/male.svg);
+          mask-image: url(../assets/icon/male.svg);
+}
+
+ion-icon[class*="custom-female"] {
+  -webkit-mask-image: url(../assets/icon/female.svg);
+          mask-image: url(../assets/icon/female.svg);
+}
+
+ion-icon[class*="custom-nickname"] {
+  -webkit-mask-image: url(../assets/icon/nickname.svg);
+          mask-image: url(../assets/icon/nickname.svg);
+}
+
+ion-icon[class*="custom-gender"] {
+  -webkit-mask-image: url(../assets/icon/gender.svg);
+          mask-image: url(../assets/icon/gender.svg);
+}
+
+ion-icon[class*="custom-intro"] {
+  -webkit-mask-image: url(../assets/icon/intro.svg);
+          mask-image: url(../assets/icon/intro.svg);
+}
+
+ion-icon[class*="custom-right-arrow"] {
+  -webkit-mask-image: url(../assets/icon/right-arrow.svg);
+          mask-image: url(../assets/icon/right-arrow.svg);
+}
+
+ion-icon[class*="custom-edit"] {
+  -webkit-mask-image: url(../assets/icon/edit.svg);
+          mask-image: url(../assets/icon/edit.svg);
+}
+
+ion-icon[class*="custom-follower"] {
+  -webkit-mask-image: url(../assets/icon/follower.svg);
+          mask-image: url(../assets/icon/follower.svg);
+}
+
+ion-icon[class*="custom-time"] {
+  -webkit-mask-image: url(../assets/icon/time.svg);
+          mask-image: url(../assets/icon/time.svg);
+}
+
+ion-icon[class*="custom-trash"] {
+  -webkit-mask-image: url(../assets/icon/trash.svg);
+          mask-image: url(../assets/icon/trash.svg);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline-offset: 0px !important;
+  outline: none !important;
+}
+
+@font-face {
+  font-family: 'Montserrat-Medium';
+  src: url("../assets/fonts/Montserrat-Medium.otf");
+}
+
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: url("../assets/fonts/Montserrat-Regular.otf");
+}
+
+@font-face {
+  font-family: 'Montserrat-SemiBold';
+  src: url("../assets/fonts/Montserrat-SemiBold.otf");
+}
+
+@font-face {
+  font-family: 'HYQiHei-bold';
+  src: url("../assets/fonts/HYQiHeiX1-55W.ttf");
+}
+
+@font-face {
+  font-family: 'HYQiHei-reg';
+  src: url("../assets/fonts/HYQiHeiX1-45W.ttf");
+}
+
+ion-menu {
+  font-family: "HYQiHei-bold";
+}
+
+ion-menu .item-md.item-block .item-inner {
+  border: none;
+  text-align: center;
+}
+
+ion-menu .bg {
+  position: absolute;
+  bottom: 0px;
+}
+
+ion-menu .bg img {
+  display: block;
+}
+
+ion-header ion-buttons {
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+ion-header ion-buttons .avatar {
+  height: 50px;
+  width: 50px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+ion-header ion-buttons .avatar img {
+  display: block;
+  height: 50px;
+  width: 50px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* Do not scale the image */
+  -o-object-position: center;
+     object-position: center;
+  /* Center the image within the element */
+  overflow: hidden;
+}
+/*# sourceMappingURL=app.css.map */

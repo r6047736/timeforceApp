@@ -1,41 +1,41 @@
 page-edit-profile {
 
-    .avatar{
-       
-@include center();
-min-height: 100px;
-flex-direction: column;
-margin: 20px;
-        img{
-            
-            display: block;
-            height:86px;
-            width:86px;
-            border-radius: 43px;
-        }
-        .text{
-            padding: 10px;
-            font-size: 0.9em;
-        }
-
+    ion-title{
+        font-family: $font-reg;
     }
-    .line{
-        .icon{
-           // @include bd(red);
-            width:20px;
-            text-align: center;
-            zoom: 1.2;
-            color:#898a8a;
-        }
-        .edit{
-            zoom: 1.2;
-        }
-        .val{
-            font-family: $font-reg;
-           padding: 0px 10px;
-            color:#898a8a;
-        }
+  .avatar {
+    @include center();
+    min-height: 100px;
+    flex-direction: column;
+    margin: 20px;
+    img {
+      display: block;
+      height: 86px;
+      width: 86px;
+      border-radius: 43px;
+      object-fit: cover; /* Do not scale the image */
+      object-position: center; /* Center the image within the element */
     }
-
-
+    .text {
+      padding: 10px;
+      font-size: 0.9em;
+    }
+  }
+  .line {
+    .icon {
+      // @include bd(red);
+      width: 20px;
+      text-align: center;
+      zoom: 1.2;
+      color: #898a8a;
+    }
+    .edit {
+      zoom: 1.2;
+    }
+    .val {
+      font-family: $font-reg;
+      padding: 0px 10px;
+      color: #898a8a;
+    }
+  }
 }

@@ -1,0 +1,30 @@
+<!-- Generated template for the UserComponent component -->
+
+
+
+
+
+<div class="user" *ngIf=" (data$ | async) as data " [hidden]="!data.displayName" >
+    
+    <div class="avatar" [navPush]="'profile'"  [navParams]="{uid:data.uid}" >
+     <div class="img">
+       <img [src]="data.photoURL ||   '../../../assets/imgs/avatar.jpeg' " />
+       <div class="status online" [ngClass]="{'online': presence && presence.status=='online' }" *ngIf=" presence$ | async  as presence "  >
+
+       </div>
+     </div>
+
+    </div>  
+    <div class="text">
+      <div class="name">{{ data.displayName}} <ion-icon  class="gender male" *ngIf="data.gender=='male' " name="custom-male" > </ion-icon> <ion-icon *ngIf="data.gender=='female'" class="gender female" name="custom-female" > </ion-icon>   </div>
+      
+      <div class="intro">{{ data.intro}}</div>
+    </div>
+    <div class="distance" *ngIf=" presence$ | async  as presence " >
+    
+      {{presence.timestamp | amTimeAgo }}
+ 
+    </div>
+
+
+    </div>

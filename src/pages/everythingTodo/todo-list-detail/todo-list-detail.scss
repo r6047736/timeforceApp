@@ -1,0 +1,258 @@
+page-todo-list-detail {
+
+    $color-dark : rgb(122, 122, 122);
+                
+ion-content{
+    background: #f8f8f8 !important;
+}
+    .container{
+        //@include padding();
+       // @include bd($red);
+
+        .header{
+           
+            margin:20px 3px;
+            display: flex;
+            min-height: 40px;
+       //@include bd(red);
+            .left{
+               // @include bd(red);
+                padding: 5px;
+                font-size: 20px;
+               
+                ion-icon{
+                   // @include bd(red);
+                    padding: 0px;
+                    line-height: 20px;
+                }
+            }
+            .right{
+             
+                flex:1;
+                padding:5px;
+               // @include bd(red);
+                .name{
+                 //   @include bd(red);
+                    font-size: 20px;
+                    line-height: 20px;
+                    margin-bottom: 10px;
+                }
+                .num{
+                   // font-family: $font-md;
+                    color: $color-dark;
+                }
+              
+            }
+        }
+      
+
+       
+
+        div.todolist{
+          margin-top: 33px;
+         padding-left: 10px;
+         font-family: $font-md;
+
+         .date{
+          color:$color-dark;
+         }
+        
+
+          ion-item-sliding{
+           
+            background: transparent;
+            padding: 0px;
+            ion-item{
+              background:  #f8f8f8 !important;
+            
+              ion-label {
+                margin: 0px !important;
+              }
+            }
+            ion-item-options{
+              //margin-left: 5px;
+                .button{
+                  font-family: $font-hf-reg;
+                  @include valign();
+                  ion-icon{
+                    
+                   
+                  }
+                  .text{
+                   
+                    margin-left: 5px;
+                  }
+
+                  &.start{
+                    color:rgb(228, 93, 93);
+
+                  }
+                  &.delete{
+                    color:$color-dark;
+                  }
+                  &.update{
+
+                  }
+
+
+                }
+
+            }
+
+          }
+
+
+        }
+        .list{
+            font-family: $font-md;
+           // padding: 9px;
+         
+          
+           .date{
+            color: $color-dark;
+                padding: 30px 0px 20px 0px;
+           }
+            .item{
+            
+                font-family: $font-hf-reg;
+                z-index: 2;
+                min-height: 30px;
+            padding: 20px 0px;
+             border-bottom: 0.3px solid  rgba(163, 163, 163, 0.3);
+             display: flex;
+             @include valign();
+
+            label{
+              
+                display: flex;
+                width:100%;
+              
+                   // @include bd(red);
+                   .text{
+                     height: 18px;
+                       flex:1;
+                       position: relative;
+                       overflow: hidden;
+                     
+                    @include valign();
+
+
+                    .tit{
+                      
+                        display: inline-block;
+                        padding:0px 10px;
+                   
+                        position: relative;
+                 
+                    }
+                    .tit:after{
+                        position: absolute;
+                        display: block;
+                        top: 50%;
+                        left:0%;
+                        content: "";
+                         height:1px;
+                         border-radius: 1px;
+                         width:1%;
+                         transform:  translate(-50%, -50%);
+                        background: white;
+                        transform: scale(0);
+                        transition: 0.2s ease-in width;
+                        
+                    }
+                    .tit.selected{
+                     color: $color-dark;
+                     transition: 0.2s ease-in color;
+                    }
+                    .tit.selected:after{
+                      
+                       
+                        width:100%;
+                        background:  $color-dark;
+                       transform:  scale(1);
+                       // transform: scaleX(100) scale(1) translate(-50%, -50%);
+                        transition: 0.2s ease-in width;
+                     
+                        
+                        
+                    }
+
+                    @keyframes cross {
+                        from {width:1% }
+                        to { width:100%}
+                      }
+
+
+                    
+                    
+                   }
+                }
+            
+            }
+        }
+    }
+
+
+
+
+.check {
+   
+    cursor: pointer;
+    position: relative;
+    margin: auto;
+    width: 18px;
+    height: 18px;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .check svg {
+      margin-right: 6px;
+  
+  
+    position: relative;
+    z-index: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #c8ccd4;
+    stroke-width: 1.5;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease;
+  }
+  .check svg path {
+    transition: all 0.3s linear;
+    transition-delay: 0.15s;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+  }
+  .check svg polyline {
+    transition: all 0.3s linear;
+    stroke-dasharray: 22;
+    stroke-dashoffset: 66;
+  }
+ 
+  
+  .checkbox:checked + .check svg {
+    stroke: #2cad53;
+  }
+  .checkbox:checked + .check svg path {
+    stroke: #2cad53;
+    stroke-dashoffset: 60;
+    transition: all 0.3s linear;
+    transition-delay: 0.15s;
+  }
+  .checkbox:checked + .check svg polyline {
+    stroke-dashoffset: 42;
+    transition: all 0.2s linear;
+    transition-delay: 0.15s;
+  }
+  .checkbox:checked + .check svg polyline {
+    stroke-dashoffset: 42;
+    transition: all 0.2s linear;
+    transition-delay: 0.15s;
+  }
+  
+
+
+}
